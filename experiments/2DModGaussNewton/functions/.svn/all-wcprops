@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions
+END
+opPadding.m
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/opPadding.m
+END
+MGNFWI.m
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/MGNFWI.m
+END
+GN_up.m
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/GN_up.m
+END
+source_fun.m
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/source_fun.m
+END
+opColumnRestrict.m
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/opColumnRestrict.m
+END
+Smoothedge.m
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/Smoothedge.m
+END
+Set_Paras.m
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/Set_Paras.m
+END
+offsetmask.m
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/SINBAD/SINBAD.Projects.SoftwareForSponsors/!svn/ver/349/releases/20120229/applications/WaveformInversion/2DModGaussNewton/functions/offsetmask.m
+END

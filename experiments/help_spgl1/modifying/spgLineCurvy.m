@@ -1,0 +1,76 @@
+function [iterG,stepG,x,f,g,r,errG,funEvals] = ...
+    spgLineCurvy(xOld,gOld,fOld,funObj,funProj,lineSrchIt)
+% Projected backtracking linesearch.
+% On entry,
+% g  is the (possibly scaled) steepest descent direction.
+
+gStep = 1; % lina: gstep is computed for non monotone line search in spg, so set to be 1 for pqn here
+EXIT_PBLINE_CONVERGED  = 0;
+EXIT_PBLINE_ITERATIONS = 1;
+EXIT_PBLINE_NODESCENT  = 2;
+gamma  = 1e-4;
+stepG   =  1;
+scale  =  1;      % Safeguard scaling.  (See below.)
+nSafe  =  0;      % No. of safeguarding steps.
+iterG   =  0;
+debug  =  false;  % Set to true to enable log.
+% n      =  length(x);
+funEvals = 0;
+
+if debug
+   fprintf(' %5s  %13s  %13s  %13s  %8s\n',...
+           'LSits','fNew','step','gts','scale');  
+end
+
+if isempty(xOld)
+    gtxOld = 0;
+else
+    gtxOld = gStep * dot(gOld,xOld);
+end
+
+while 1
+    
+    % Calculate scaling of gradient
+    g_scale = -stepG*scale*gStep;
+    % g_scale = 1;
+    
+    % Evaluate trial point
+    clear x
+    if isempty(xOld)
+        x     = funProj(g_scale .* gOld);
+    else
+        x     = funProj(xOld + g_scale .* gOld);
+    end
+    
+    % Evaluate function value
+    clear r
+    [f,g,r]  = funObj(x);
+    funEvals = funEvals+1;
+    gtx   = gStep * dot(gOld,x);
+    gts   = scale * (gtx - gtxOld);
+    if gts >= 0 % Should we check real and complex parts individually?
+       errG = EXIT_PBLINE_NODESCENT;
+       break
+    end
+
+    if debug
+        fprintf(' LS %2i  %13.7e  %13.7e  %13.6e  %8.1e\n',...
+                iterG,f,stepG,undist(gts),scale);
+    end
+    
+    % 03 Aug 07: If gts is complex, then should be looking at -abs(gts).
+    if f < fOld - gamma*stepG*abs(gts)  % Sufficient descent condition.
+       errG = EXIT_PBLINE_CONVERGED;
+       break
+    elseif iterG >= lineSrchIt                 % Too many linesearch iterations.
+       errG = EXIT_PBLINE_ITERATIONS;
+       break
+    end
+    
+    % New linesearch iteration.
+    iterG = iterG + 1;
+    stepG = stepG / 2;
+    
+end % while 1
+    
+end % function spgLineCurvy

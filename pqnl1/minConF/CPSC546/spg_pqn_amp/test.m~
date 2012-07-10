@@ -1,0 +1,13 @@
+m = 120; n = 512; k = 20; % m rows, n cols, k nonzeros.
+p = randperm(n); x0 = zeros(n,1); x0(p(1:k)) = sign(randn(k,1));
+A  = randn(m,n); [Q,R] = qr(A',0);  A = Q';
+b  = A*x0 + 0.005 * randn(m,1);
+opts = spgSetParms('optTol',1e-4,'verbosity','0');
+[xspg,rspg,gspg,infospg] = spgl1(A, b, 0, 1e-3, zeros(size(A,2),1), opts);
+[xpqn,rpqn,gpqn,infopqn] = pqnl1(A, b, 0, 1e-3, zeros(size(A,2),1), opts);
+tic;
+[xhatamp,infoamp] = reconstructAmpcountfast(A, b, 500, 1e-3);
+toc;
+timespg = infospg.timeTotal;
+timepqn = infopqn.timeTotal;
+timeamp = toc-tic;
