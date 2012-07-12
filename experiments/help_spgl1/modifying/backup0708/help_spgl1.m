@@ -5,7 +5,7 @@
 %addpath(genpath('/Volumes/Users/linamiao/Dropbox/PQN/'))
 cd ../../../..;
 addpath(genpath(pwd))
-cd ./experiments/help_spgl1/modifying/
+cd ./experiments/help_spgl1/modifying/backup0708
 
 %stream = RandStream.getGlobalStream;
 %reset(stream);
