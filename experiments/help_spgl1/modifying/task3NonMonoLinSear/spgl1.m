@@ -1,5 +1,5 @@
 function [x,r,g,info] = spgl1( A, b, tau, sigma, x, options )
-% opt out nonmonotone
+% opt out nonmonotone line search
 % opt out spglinecuvy
 % opt out BB initiallization of line search, by setting gStep to 1;
 
@@ -535,7 +535,8 @@ while 1
        %---------------------------------------------------------------
        dispFlag('begin LineSrch')
        temp = stepG;
-       %[nLine,stepG,lnErr] = spgLineCurvy(max(lastFv));
+       %lina :: spglineCurvy opt out
+       %[nLine,stepG,lnErr] = spgLineCurvy(max(lastFv)); 
        nLine = 0;
        stepG = temp;
        lnErr = 1;
@@ -549,7 +550,7 @@ while 1
           x    = xOld;
           
           % In-place scaling of gradient and updating of x to save memory
-          gStep = 1;
+          gStep = 1; % lina :: set gStep to 1, opt out bb scaling of step length, important!
           if ~isempty(xOld)
               dx = project(xOld - gStep.*g, tau) - xOld;
           else
@@ -602,7 +603,7 @@ while 1
        %---------------------------------------------------------------
        % Update gradient and compute new Barzilai-Borwein scaling.
        %---------------------------------------------------------------
-%        if isempty(xOld)
+%        if isempty(xOld)  % lina :: all those BB related scaling are commented
 %            s    = x;
 %        else
 %            xOld    = x - xOld; % in-place calculating of s
@@ -644,7 +645,7 @@ while 1
     if singleTau || f > sigma^2 / 2 % Don't update if superoptimal.
        lastFv(mod(iter,nPrevVals)+1) = undist(f);
        if fBest > f
-          % fBest = f;
+          % fBest = f; % lina :: commented for nonmono line sear opt out
           % xBest = x;
        end
     end
