@@ -317,6 +317,7 @@ while funEvals <= maxIter
                      
                      
         if testUpdateTau
+            printf('% break of testUpdateTau');
             break; % break of testUpdateTau
         end
         
@@ -368,7 +369,7 @@ function [p,subProjects] = solveSubProblem(x,g,H,funProj,optTol,maxIter,testOpt,
 % options.testOpt = testOpt;
 % options.feasibleInit = feasibleInit;
 
-options.verbose = 0; % copy from original pqnl1
+options.verbose = 0; 
 options.optTol = max(optTol*1e-6,1e-6);
 options.maxIter = maxIter*100;
 options.testOpt = testOpt;

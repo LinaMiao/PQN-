@@ -63,7 +63,7 @@ end
 
 % Output Log
 if verbose >= 2
-        fprintf('%10s %10s %10s %15s %15s %15s\n','Iteration','FunEvals','Projections','Step Length','Function Val','Opt Cond');
+        fprintf('%10s %10s %10s %15s %15s %15s\n','Iteration','FunEvals','Projections','Step Length','rNorm2','Opt Cond');
 end
 
 % Make objective function (if using numerical derivatives)
@@ -198,7 +198,7 @@ while funEvals <= maxIter
     x_new = x + t*d;
     [f_new,g_new,r_new] = funObj(x_new);
     funEvals = funEvals+1;
-
+    
     % Backtracking Line Search
     f_old = f;
     while f_new > f + suffDec*t*gtd || ~isLegal(f_new)
@@ -272,7 +272,7 @@ while funEvals <= maxIter
 
     % Output Log
     if verbose >= 2
-            fprintf('%10d %10d %10d %15.5e %15.5e %15.5e %15.5e\n',i,funEvals*funEvalMultiplier,projects,t,f,optCond,rNorm);
+            fprintf('%10d %10d %10d %15.5e %15.5e %15.5e\n',i,funEvals*funEvalMultiplier,projects,t,rNorm,optCond);
     end
 
     i = i + 1;
@@ -369,7 +369,7 @@ function [p,subProjects] = solveSubProblem(x,g,H,funProj,optTol,maxIter,testOpt,
 % options.testOpt = testOpt;
 % options.feasibleInit = feasibleInit;
 
-options.verbose = 0; % copy from original pqnl1
+options.verbose = 0; 
 options.optTol = max(optTol*1e-6,1e-6);
 options.maxIter = maxIter*100;
 options.testOpt = testOpt;
