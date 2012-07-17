@@ -1,4 +1,4 @@
-function [x,f,funEvals,projects] = minConf_SPG(funObj,x,funProj,options)
+function [x,f,funEvals,projects] = minConF_SPG(funObj,x,funProj,options)
 % function [x,f] = minConF_SPG(funObj,x,funProj,options)
 %
 % Function for using Spectral Projected Gradient to solve problems of the form
