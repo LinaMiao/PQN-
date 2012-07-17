@@ -158,13 +158,13 @@ while funEvals <= maxIter
     gtd = g'*d;
     if gtd > -optTol
         if verbose >= 1
-%            fprintf('Directional Derivative below optTol\n');
+            fprintf('Directional Derivative below optTol\n');
         end
-        %break;
+        break;
     end
 
     % Select Initial Guess to step length
-%     if i == itn+1 || adjustStep == 0
+%     if i == itn || adjustStep == 0
 %        t = 1; 
 %     else
 %         t = min(1,2*(f-f_old)/gtd);
@@ -187,7 +187,8 @@ while funEvals <= maxIter
     f_old = f;
     while f_new > f + suffDec*t*gtd || ~isLegal(f_new)
        
-%%%%%%%%%%%%%%%%%%%%%%%%%%line search used in pqn%%%%%%%%        
+%%%%%%%%%%%%%%%%%%%%%%%%%%line search used in pqn%%%%%%%%   
+        temp = t;
         % Backtrack to next trial value
         if ~isLegal(f_new) || ~isLegal(g_new)
             if verbose == 3
