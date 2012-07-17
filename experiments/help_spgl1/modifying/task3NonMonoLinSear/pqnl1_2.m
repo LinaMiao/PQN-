@@ -518,10 +518,10 @@ while 1
             funObj = @(x) fun(x);
             %funProj = @(x)sign(x).*projectRandom2(abs(x),tau);
             funProj = @(x) project(x,tau);
-            opt.verbose = 2;
+            opt.verbose = 3;
             opt.optTol = 1e-8;
             opt.maxIter = options.iterations;
-            opt.maxIter = 10; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
+            opt.maxIter = 30; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
             %opt.optTol = 1e-1-iter*(1e-1-1e-6)/options.iterations;
             %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
             if iter == 0
