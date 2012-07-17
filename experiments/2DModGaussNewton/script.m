@@ -10,6 +10,7 @@ opts.iterations = 20;
 save results_1 results_1
 clear
 load camenbert
+opts.iterations = 10; 
 [results_2] = MGNFWI(reshape(m0,n),Dobs,wavelet,model,opts,2);
 save results_2 results_2
 
