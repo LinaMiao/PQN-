@@ -49,8 +49,8 @@ if nargin < 4
 end
 [verbose,numDiff,optTol,maxIter,maxProject,suffDec,corrections,adjustStep,bbInit,SPGoptTol,SPGiters,SPGtestOpt] = ...
     myProcessOptions(...
-    options,'verbose',2,'numDiff',0,'optTol',1e-4,'maxIter',100,'maxProject',100000,'suffDec',1e-4,...
-    'corrections',1,'adjustStep',1,'bbInit',1,'SPGoptTol',1e-6,'SPGiters',500,'SPGtestOpt',1);
+    options,'verbose',2,'numDiff',0,'optTol',1e-6,'maxIter',100,'maxProject',100000,'suffDec',1e-4,...
+    'corrections',50,'adjustStep',1,'bbInit',1,'SPGoptTol',1e-6,'SPGiters',500,'SPGtestOpt',1);
 
 % Output Parameter Settings
 if verbose >= 3
@@ -83,7 +83,7 @@ if numDiff
 end
 
 % Project initial parameter vector
-% x = funProj(x);
+x = funProj(x);
 projects = 1;
 
 % Evaluate initial parameters
@@ -158,20 +158,19 @@ while funEvals <= maxIter
     gtd = g'*d;
     if gtd > -optTol
         if verbose >= 1
-%            fprintf('Directional Derivative below optTol\n');
+            fprintf('Directional Derivative below optTol\n');
         end
-        %break;
+        testUpdateTau = 1; % Lina :: changes, whether make sense or not?
+        i = i+1; 
+        break;
     end
 
     % Select Initial Guess to step length
-%     if i == itn+1 || adjustStep == 0
-%        t = 1; 
-%     else
-%         t = min(1,2*(f-f_old)/gtd);
-%     end
-     
-    t = 1; % set t = 1 same as spgl1
-    
+    if i == itn || adjustStep == 0
+       t = 1; 
+    else
+        t = min(1,2*(f-f_old)/gtd);
+    end
     
     % Bound Step length on first iteration
     if i == itn
@@ -182,12 +181,15 @@ while funEvals <= maxIter
     x_new = x + t*d;
     [f_new,g_new,r_new] = funObj(x_new);
     funEvals = funEvals+1;
+%      if i >= 
+%         keyboard;
+%      end
 
     % Backtracking Line Search
     f_old = f;
     while f_new > f + suffDec*t*gtd || ~isLegal(f_new)
-       
-%%%%%%%%%%%%%%%%%%%%%%%%%%line search used in pqn%%%%%%%%        
+        temp = t;
+        
         % Backtrack to next trial value
         if ~isLegal(f_new) || ~isLegal(g_new)
             if verbose == 3
@@ -226,23 +228,6 @@ while funEvals <= maxIter
             r_new = r;
             break;
         end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%% line search from spgl1%%%%%%%%%%%
-%         % Safeguarded quadratic interpolation.
-%         temp = t; % used in spgl1 line search 
-%         if temp <= 0.1
-%            temp  = temp / 2;
-%         else
-%            tmp = (-gtd*temp^2) / (2*(f_new-f-temp*gtd));
-%            if tmp < 0.1 || tmp > 0.9*temp || isnan(tmp)
-%               tmp = temp / 2;
-%            end
-%            temp = tmp;
-%         end
-% 
-%         t = temp;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
         % Evaluate New Point
         x_new = x + t*d;
@@ -287,7 +272,7 @@ while funEvals <= maxIter
     end
     
     % Check optimality
-    if i == itn+10000; 1;% do not check this for the first itn, opt out
+    if i == itn+10000; 1;% do not check this for the first itn, Lina :: opt out
     else
         if optCond < optTol
            fprintf('First-Order Optimality Conditions Below optTol\n');
@@ -318,8 +303,8 @@ while funEvals <= maxIter
         end
        
         testRelChange1 = (abs(f - f_old) <= decTol * f);
-        testRelChange2 = (abs(f - f_old) <= 1e-1 * f * (abs(norm(r,2) - sigma))); %(abs(rNorm2part(i-1-itn) - sigma)));
-        %testRelChange2 = (abs(f - f_old) <= 1e-1 * f * (abs(rNorm2part(i-1-itn) - sigma)));
+        testRelChange2 = (abs(f - f_old) <= 1e-1 * f * (abs(norm(r,2) - sigma))); 
+        %testRelChange2 = (abs(f - f_old) <= 1e-1 * f * (abs(rNorm2part(i-itn) - sigma)));
         testUpdateTau  = ((testRelChange1 && rNorm >  2 * sigma) || ...
                          (testRelChange2 && rNorm <= 2 * sigma)) && ...
                          ~stat;% && ~testUpdateTau;
@@ -372,19 +357,11 @@ end
 
 function [p,subProjects] = solveSubProblem(x,g,H,funProj,optTol,maxIter,testOpt,feasibleInit,x_init)
 % Uses SPG to solve for projected quasi-Newton direction
-%[p,subProjects] = solveSubProblem(x,g,HvFunc,funProj,SPGoptTol,SPGiters,SPGtestOpt,feasibleInit,x);
-% options.verbose = 0;
-% options.optTol = 1e-4;
-% options.maxIter = maxIter;
-% options.testOpt = testOpt;
-% options.feasibleInit = feasibleInit;
 
-options.verbose = 0; % copy from original pqnl1
-%options.optTol = max(optTol,1e-6);
+options.verbose = 0; 
+options.optTol = max(optTol*1e-6,1e-6);
 options.optTol = 1e-6;
 options.maxIter = maxIter*100;
-% lina : spgl1
-%options.maxIter = 1;
 options.testOpt = testOpt;
 options.feasibleInit = feasibleInit;
 
@@ -395,7 +372,6 @@ end
 function [f,g] = subHv(p,x,g,HvFunc)
 d = p-x;
 Hd = HvFunc(d);
-% Lina : spgl1
-f = g'*d; %+ (1/2)*d'*Hd;
+f = g'*d + (1/2)*d'*Hd;
 g = g + Hd;
 end

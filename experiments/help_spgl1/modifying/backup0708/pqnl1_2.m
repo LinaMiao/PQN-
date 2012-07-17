@@ -262,7 +262,7 @@ nnzIter       = 0;                  % No. of its with fixed pattern.
 nnzIdx        = [];                 % Active-set indicator.
 subspace      = false;              % Flag if did subspace min in current itn.
 stepG         = 1;                  % Step length for projected gradient.
-testUpdateTau = 0;                  % Previous step did not update tau
+testUpdateTau = 1;                  % Previous step did not update tau
 
 % Determine initial x, vector length n, and see if problem is complex
 explicit = ~(isa(A,'function_handle'));
@@ -519,10 +519,10 @@ while 1
             %funProj = @(x)sign(x).*projectRandom2(abs(x),tau);
             funProj = @(x) project(x,tau);
             opt.verbose = 2;
-            opt.optTol = 1e-8;
+            opt.optTol = sigma^2;
             opt.maxIter = options.iterations;
             opt.maxIter = 10; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
-            %opt.optTol = 1e-1-iter*(1e-1-1e-6)/options.iterations;
+            %opt.optTol = 1e-6-iter*(1e-6-1e-8)/options.iterations;
             %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
             if iter == 0
                 S = zeros(length(x),0);
