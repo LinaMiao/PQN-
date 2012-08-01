@@ -534,7 +534,7 @@ while 1
             1;
         end
         [x,iterpqn,f,g,r,xNorm1part,rNorm2part,timePqnProject,testUpdateTau] = ...
-            minConF_PQN_2(funObj,xOld,funProj,opt,iter,options.iterations,weights,decTol,sigma,b,tau,bpTol);
+            minConF_PQN_pqnl1(funObj,xOld,funProj,opt,iter,options.iterations,weights,decTol,sigma,b,tau,bpTol);
         temp = norm(r);
         % testUpdateTau = 1;
         if iterpqn<=0 1;

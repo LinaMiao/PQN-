@@ -301,7 +301,9 @@ subspace      = false;              % Flag if did subspace min in current itn.
 stepG         = 1;                  % Step length for projected gradient.
 testUpdateTau = 0;                  % Previous step did not update tau   
 
-
+if options.PQN == 1
+    testUpdateTau = 1;
+end
 
 
 
@@ -531,11 +533,12 @@ while 1
            
           if quitPareto && iter >= minPareto, stat=EXIT_AT_PARETO;end % Chose to exit out of SPGL1 when pareto is reached 
           % Update tau.
-          tauOld   = tau; %%% Lina :: why changing the way of updating tau?
-          if options.PQN == 1 % if PQN, keep the updating tau in original spgl1
-              tau      = max(0,tau + (rNorm * aError1) / (gNorm));
+          tauOld   = tau; 
+          
+          if(strcmp(func2str(funPenalty), 'funLS2'))
+              tau      = max(0,tau + (norm(r) - sigma)*norm(r) / (gNorm)); % deleted rNorm from n
           else
-              tau      = max(0,tau + (aError1) / (gNorm)); % deleted rNorm from numerator. In this algorithm, ony gNorm with contain derivative information.
+              tau      = max(0,tau + (aError1) / (gNorm)); % deleted rNorm from numerator. In thi
           end
           
           nNewton  = nNewton + 1;
@@ -604,12 +607,12 @@ while 1
         funObj = @(x) funPQN(x,funForward,funPenalty);
         %funObj = @(x) fun(x);
         funProj = @(x) project(x,tau);
-        opt.verbose = 0;
+        opt.verbose = 2;
         opt.optTol = sigma^2;
         opt.maxIter = options.iterations;
-        opt.maxIter = 2; 
+        %opt.maxIter = 2; 
         [x,iterpqn,f,g,r,xNorm1part,rNorm2part,timePqnProject,testUpdateTau] = ...
-            minConF_PQN_2(funObj,xOld,funProj,opt,iter,options.iterations,weights,decTol,sigma,b,tau,bpTol);       
+            minConF_PQN_sasha(funObj,xOld,funProj,opt,iter,options.iterations,weights,decTol,sigma,b,tau,bpTol);       
         if iterpqn<=0;
         else
             xNorm1(iter+1:iter+iterpqn) = xNorm1part;
@@ -640,13 +643,13 @@ while 1
        %---------------------------------------------------------------
        dispFlag('begin LineSrch')
 
-       [f,x,r,nLine,stepG,lnErr, localProdA] = ...
-           spgLineCurvy(x,gStep*g,max(lastFv),funForward, funPenalty, b,@project,tau, params);
-       nProdA = nProdA + localProdA;
-       
-       dispFlag('fin LineSrch');
-       nLineTot = nLineTot + nLine;
-       
+%        [f,x,r,nLine,stepG,lnErr, localProdA] = ...
+%            spgLineCurvy(x,gStep*g,max(lastFv),funForward, funPenalty, b,@project,tau, params);
+%        nProdA = nProdA + localProdA;
+%        
+%        dispFlag('fin LineSrch');
+%        nLineTot = nLineTot + nLine;
+       lnErr = 1;
        if lnErr
           %  Projected backtrack failed. Retry with feasible dir'n linesearch.
           dispFlag('begin FeasLineSrch')
@@ -956,14 +959,15 @@ function [fObj gObj rObj] = funPQN(x,funForward,funPenalty)
     if isempty(x)
          rObj = b; % r = b - Ax
          [fObj gObj] = funCompositeR(rObj, funForward, funPenalty, params);
-         gObj = gObj*norm(rObj); %%% Lina :: attention, try to keep the same as pqnl1
+         %gObj = gObj*norm(rObj); %%% Lina :: attention, try to keep the same as pqnl1
     else
          rObj = b - funForward(x, [], params); % r = b - Ax
          nProdA = nProdA + 1;
          [fObj gObj] = funCompositeR(rObj, funForward, funPenalty, params);
-         gObj = gObj*norm(rObj);
+         %gObj = gObj*norm(rObj);
     end
 end
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
