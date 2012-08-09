@@ -41,7 +41,7 @@ end
 [verbose,numDiff,optTol,maxIter,maxProject,suffDec,corrections,adjustStep,bbInit,SPGoptTol,SPGiters,SPGtestOpt] = ...
     myProcessOptions(...
     options,'verbose',2,'numDiff',0,'optTol',1e-12,'maxIter',100,'maxProject',100000,'suffDec',1e-4,...
-    'corrections',inf,'adjustStep',1,'bbInit',1,'SPGoptTol',1e-12,'SPGiters',500,'SPGtestOpt',1);
+    'corrections',30,'adjustStep',1,'bbInit',1,'SPGoptTol',1e-12,'SPGiters',500,'SPGtestOpt',1);
 
 % Output Parameter Settings
 if verbose >= 3
@@ -85,7 +85,7 @@ funEvals = 1;
 
 % Check Optimality of Initial Point
 projects = projects+1;
-if sum(abs(funProj(x-g)-x)) < optTol
+if sum(abs(funProj(x-g)-x)) < min(optTol^2/2,1e-12)
     if verbose >= 1
         fprintf('First-Order Optimality Conditions Below optTol at Initial Point\n');
     end
@@ -149,7 +149,7 @@ while funEvals <= maxIter
     
     % Check that Progress can be made along the direction
     gtd = g'*d;
-    if gtd > -optTol
+    if gtd > -min(optTol^2/2,1e-12)
         if verbose >= 1
             fprintf('Directional Derivative below optTol\n');
         end
@@ -165,7 +165,7 @@ while funEvals <= maxIter
             i = i+1;
             break;
         else
-            while g'*d > -optTol && size(S,2) >= 1
+            while g'*d > -min(optTol^2/2,1e-12) && size(S,2) >= 1
                 S = S(:,1:end-1);
                 Y = Y(:,1:end-1);
                 k = size(Y,2);
@@ -282,7 +282,7 @@ while funEvals <= maxIter
          
          
          % Check whether step has become too small
-         if sum(abs(t*d)) < optTol || t == 0
+         if sum(abs(t*d)) < min(optTol^2/2,1e-12) || t == 0
              if verbose == 3
                  fprintf('Line Search failed\n');
              end
@@ -338,12 +338,12 @@ while funEvals <= maxIter
     
     % Check optimality
     
-    if optCond < optTol
+    if optCond < min(optTol^2/2,1e-12)
         fprintf('First-Order Optimality Conditions Below optTol\n');
         break;
     end
     
-    if sum(abs(t*d)) < optTol
+    if sum(abs(t*d)) < min(optTol^2/2,1e-12)
         if verbose >= 1
             fprintf('Step size below optTol\n');
         end
@@ -360,7 +360,7 @@ while funEvals <= maxIter
             % Check optimality of the current root.
             test1 = rNorm       <=   bpTol * bNorm;
             test2 = dNorm       <=   bpTol * rNorm;
-            test3 = rError1     <=  1e-4; %% Lina :: optTol
+            test3 = rError1     <=  optTol; %% Lina :: optTol
             %test3 = rError1     <=  sqrt(2*optTol);
             test4 = rNorm       <=  sigma;
 
@@ -370,21 +370,30 @@ while funEvals <= maxIter
             if test1, stat=1; end % Resid minim'zd -> BP sol.
         end
 
-        testRelChange1 = (abs(f - f_old) <= decTol * f);
+        testRelChange1 = (abs(f - f_old) <= 10*decTol * f);
         testRelChange2 = (abs(f - f_old) <= 1e-1 * f * (abs(norm(r,2) - sigma)));
         %testRelChange2 = (abs(f - f_old) <= 1e-1 * f * (abs(rNorm2part(i-itn) - sigma)));
         testUpdateTau  = ((testRelChange1 && rNorm >  2 * sigma) || ...
             (testRelChange2 && rNorm <= 2 * sigma)) && ...
             ~stat;% && ~testUpdateTau;
+        
+%         if stat
+%             warning('find BP solution')
+%             keyboard;
+%             break;
+%         end
 
-
+%         if testRelChange1 || testRelChange2
+%             keyboard;
+%         end
+        
         if testUpdateTau
-            fprintf('% break of testUpdateTau');
+            fprintf('break of testUpdateTau');
             break; % break of testUpdateTau
         end
     end
 
-    if abs(f-f_old) < optTol %% Lina :: optTol
+    if abs(f-f_old) < min(optTol^2/2,1e-12) %% Lina :: optTol
         if verbose >= 1
             fprintf('Function value changing by less than optTol\n');
         end
@@ -413,7 +422,7 @@ while funEvals <= maxIter
         break; % break of maximum itns
     end
     
-    if norm(r,2) <= 1e-4;  %% Lina :: optTol
+    if norm(r,2) <= optTol;  %% Lina :: optTol
         if verbose >= 1
             fprintf('Optimal solution found\n');
         end

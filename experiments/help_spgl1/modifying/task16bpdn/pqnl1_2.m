@@ -516,6 +516,7 @@ while 1
         opt.verbose = 2;
         %opt.optTol = sigma^2;
         opt.maxIter = options.iterations;
+        opt.optTol = options.optTol;
         %opt.maxIter = 1; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
         %opt.optTol = 1e-6-iter*(1e-6-1e-8)/options.iterations;
         %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
