@@ -262,7 +262,7 @@ nnzIter       = 0;                  % No. of its with fixed pattern.
 nnzIdx        = [];                 % Active-set indicator.
 subspace      = false;              % Flag if did subspace min in current itn.
 stepG         = 1;                  % Step length for projected gradient.
-testUpdateTau = 1;                  % Always update tau at the very first iteration
+testUpdateTau = 1;                  
 
 % Determine initial x, vector length n, and see if problem is complex
 explicit = ~(isa(A,'function_handle'));
@@ -384,9 +384,9 @@ else
 end
 
 % Required for nonmonotone strategy.
-% lastFv(1) = f;
-% fBest     = f;
-% xBest     = x;
+lastFv(1) = f;
+fBest     = f;
+xBest     = x;
 fOld      = f;
 
 dispFlag('fin Init')
@@ -513,64 +513,63 @@ while 1
     %==================================================================
     
     xOld = x;  fOld = f; rOld = r; gOld = g;
-    if  1
-        try
-            funObj = @(x) fun(x);
-            %funProj = @(x)sign(x).*projectRandom2(abs(x),tau);
-            funProj = @(x) project(x,tau);
-            opt.verbose = 2;
-            opt.optTol = sigma^2;
-            opt.maxIter = options.iterations;
-            opt.maxIter = 30; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
-            %opt.optTol = 1e-6-iter*(1e-6-1e-8)/options.iterations;
-            %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
-            if iter == 0
-                S = zeros(length(x),0);
-                Y = zeros(length(x),0);
-                g_old = g;
-                x_old = x; 
-                Hdiag = 1;
-            else
-                1;
-            end
-            [x,iterpqn,f,g,r,xNorm1part,rNorm2part,timePqnProject,testUpdateTau,nLine] = ...
-            minConF_PQN_pqnl1(funObj,xOld,funProj,opt,iter,options.iterations,weights,decTol,sigma,b,tau,bpTol);
-            nLineTot = nLineTot + nLine;
-            % testUpdateTau = 1;
-            if iterpqn<=0 1;
-            else
-                xNorm1(iter+1:iter+iterpqn) = xNorm1part;
-                rNorm2(iter+1:iter+iterpqn) = rNorm2part;   
-                iter = iter+iterpqn;
-            end
-            timeProject = timeProject+timePqnProject;
-            
-         
-        catch % Detect matrix-vector multiply limit error WARNING: the latest round of optimizations may have broke this, do testing to veriify
-           err = lasterror;
-           if strcmp(err.identifier,'SPGL1:MaximumMatvec')
-             stat = EXIT_MATVEC_LIMIT;
-             iter = iter - 1;
-             x = xOld;  f = fOld;  r = rOld;  g = gOld;
-             break;
-           else
-             rethrow(err);
-           end
-        end
-        
     
-    end% if testupdateTau
+    try
+        funObj = @(x) fun(x);
+        %funProj = @(x)sign(x).*projectRandom2(abs(x),tau);
+        funProj = @(x) project(x,tau);
+        opt.verbose = 2;
+        opt.optTol = sigma^2;
+        opt.maxIter = options.iterations;
+        %opt.maxIter = 1; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
+        %opt.optTol = 1e-6-iter*(1e-6-1e-8)/options.iterations;
+        %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
+        if iter == 0
+            S = zeros(length(x),0);
+            Y = zeros(length(x),0);
+            g_old = g;
+            x_old = x;
+            Hdiag = 1;
+        else
+            1;
+        end
+        [x,iterpqn,f,g,r,xNorm1part,rNorm2part,timePqnProject,testUpdateTau,nLine] = ...
+            minConF_PQN_pqnl1(funObj,xOld,funProj,opt,iter,options.iterations,weights,decTol,sigma,b,tau,bpTol);
+        nLineTot = nLineTot + nLine;
+        % testUpdateTau = 1;
+        if iterpqn<=0 1;
+        else
+            xNorm1(iter+1:iter+iterpqn) = xNorm1part;
+            rNorm2(iter+1:iter+iterpqn) = rNorm2part;
+            iter = iter+iterpqn;
+        end
+        timeProject = timeProject+timePqnProject;
+        
+        
+    catch % Detect matrix-vector multiply limit error WARNING: the latest round of optimizations may have broke this, do testing to veriify
+        err = lasterror;
+        if strcmp(err.identifier,'SPGL1:MaximumMatvec')
+            stat = EXIT_MATVEC_LIMIT;
+            iter = iter - 1;
+            x = xOld;  f = fOld;  r = rOld;  g = gOld;
+            break;
+        else
+            rethrow(err);
+        end
+    end
+    
+    
 
     %------------------------------------------------------------------
     % Update function history.
     %------------------------------------------------------------------
-%     if singleTau || f > sigma^2 / 2 % Don't update if superoptimal.
-%        lastFv(mod(iter,nPrevVals)+1) = undist(f);
-%        if fBest > f
-%           fBest = f;
-%           % xBest = x;
-%        end
-%     end
+    if singleTau || f > sigma^2 / 2 % Don't update if superoptimal.
+       lastFv(mod(iter,nPrevVals)+1) = undist(f);
+       if fBest > f
+          fBest = f;
+          % xBest = x;
+       end
+    end
     
 
 end % while 1
@@ -790,13 +789,11 @@ end % function dispFlag
 function [fObj gObj rObj] = fun(x)
     if isempty(x)
          rObj = b; % r = b - Ax
-         %fObj = norm(rObj)^2/2;
-         fObj = norm(rObj);
+         fObj = norm(rObj)^2/2;
          gObj = -Aprod(rObj,2); % g = -A'r
     else
          rObj = b - Aprod(x,1); % r = b - Ax
-         %fObj = norm(rObj)^2/2;
-         fObj = norm(rObj);
+         fObj = norm(rObj)^2/2;
          gObj = -Aprod(rObj,2); % g = -A'r
     end
 end
