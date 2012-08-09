@@ -1,16 +1,5 @@
 function [x,itnpqn,f,g,r,funEvals,xNorm1part,rNorm2part,timePqnProject,projects,S,Y,g_old,x_old,Hdiag,testUpdateTau] = minConF_PQN_2(funObj,x,funProj,options,itn,maxitn,weights,decTol,sigma,b,tau,bpTol,S,Y,g_old,x_old,Hdiag)
 % 
-% this version only put minConF_PQN insised spgl1, 
-% without any passing of Hessian vectors
-% with all the exit of PQN kept
-
-% current r for testupdatetau
-% no. of corrections = 0
-
-
-
-
-
 % Function for using a limited-memory projected quasi-Newton to solve problems of the form
 %   min funObj(x) s.t. x in C
 %

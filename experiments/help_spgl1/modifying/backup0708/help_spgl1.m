@@ -3,30 +3,31 @@
 
 %% addpath for PQN working
 %addpath(genpath('/Volumes/Users/linamiao/Dropbox/PQN/'))
-% cd ../../../..;
-% addpath(genpath(pwd))
-% cd ./experiments/help_spgl1/modifying/backup0708
+cd ../../../..;
+addpath(genpath(pwd))
+cd ./experiments/help_spgl1/modifying/backup0708
 
 %stream = RandStream.getGlobalStream;
 %reset(stream);
 
 %problem setting
-% m = 1200; n = 5120; k = 200; % m rows, n cols, k nonzeros.
-% p = randperm(n); x0 = zeros(n,1); x0(p(1:k)) = sign(randn(k,1));
-% A  = randn(m,n); [Q,R] = qr(A',0);  A = Q';
-% b  = A*x0 + 0.005 * randn(m,1);
-% 
-% %opts.decTol = 1e-3;
-% opts.optTol = 1e-4;
-% opts.iterations = 200;
-% % opts.nPrevVals = 1; % opt out the nonmonotone line search 
-% 
+m = 120; n = 512; k = 20; % m rows, n cols, k nonzeros.
+p = randperm(n); x0 = zeros(n,1); x0(p(1:k)) = sign(randn(k,1));
+A  = randn(m,n); [Q,R] = qr(A',0);  A = Q';
+b  = A*x0 + 0.005 * randn(m,1);
+
+opts.decTol = 1e-3;
+opts.optTol = 1e-4;
+opts.iterations = 100;
+opts.nPrevVals = 1; % opt out the nonmonotone line search 
+
 % save temp A b opts
-clear
-load temp.mat
+% clear
+% load temp.mat
 %% spgl1
 tic
-[x_spg,r_spg,g_spg,info_spg] = spgl1(A, b, 0, 1e-3, [], opts); % Find BP sol'n.
+%[x_spg,r_spg,g_spg,info_spg] = spgl1(A, b, 0, 1e-3, [], opts); % Find BP sol'n.
+[x_spg,r_spg,g_spg,info_spg] = spgl1_origin(A, b, 0, 1e-3, [], opts); % Find BP sol'n.
 toc
 %% pqnl1
 %opts.iterations = .25*opts.iterations;

@@ -262,7 +262,7 @@ nnzIter       = 0;                  % No. of its with fixed pattern.
 nnzIdx        = [];                 % Active-set indicator.
 subspace      = false;              % Flag if did subspace min in current itn.
 stepG         = 1;                  % Step length for projected gradient.
-testUpdateTau = 1;                  % Previous step did not update tau
+testUpdateTau = 1;                  % Always update tau at the very first iteration
 
 % Determine initial x, vector length n, and see if problem is complex
 explicit = ~(isa(A,'function_handle'));
@@ -521,7 +521,7 @@ while 1
             opt.verbose = 2;
             opt.optTol = sigma^2;
             opt.maxIter = options.iterations;
-            opt.maxIter = 10; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
+            %opt.maxIter = 1; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
             %opt.optTol = 1e-6-iter*(1e-6-1e-8)/options.iterations;
             %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
             if iter == 0
@@ -790,11 +790,13 @@ end % function dispFlag
 function [fObj gObj rObj] = fun(x)
     if isempty(x)
          rObj = b; % r = b - Ax
-         fObj = norm(rObj)^2/2;
+         %fObj = norm(rObj)^2/2;
+         fObj = norm(rObj);
          gObj = -Aprod(rObj,2); % g = -A'r
     else
          rObj = b - Aprod(x,1); % r = b - Ax
-         fObj = norm(rObj)^2/2;
+         %fObj = norm(rObj)^2/2;
+         fObj = norm(rObj);
          gObj = -Aprod(rObj,2); % g = -A'r
     end
 end
