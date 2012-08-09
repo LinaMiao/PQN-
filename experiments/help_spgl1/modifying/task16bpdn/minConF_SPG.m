@@ -372,7 +372,8 @@ while funEvals <= maxIter
         break;
     end
 
-    if abs(f-f_old) < optTol
+    if abs(f-f_old) < abs(1e-3*f)
+        %abs(f-f_old) 
         if verbose >= 1
             fprintf('Function value changing by less than optTol\n');
         end
