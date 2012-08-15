@@ -1,12 +1,9 @@
 %% add working path of tools and functions
-%addpath(genpath('e:\research\Tools\spot-slim'))
-% addpath(genpath('e:\research\Tools\pSPOT'))
-cd ../../../../../../pqnl1;
+%% add tools
+cd ../../../../../../functions/
 addpath(genpath(pwd))
-cd ../experiments/help_spgl1/modifying/task16bpdn/
-addpath(genpath(pwd))
-cd ./seismic/deconvolution
-rmpath('/Volumes/Users/linamiao/Dropbox/PQN/pqnl1/minConF/')
+cd ../experiments/help_spgl1/modifying/task16bpdn/seismic/deconvolution/
+
 
 
 %% problem setting
@@ -76,24 +73,27 @@ title('convolution result')
     
     opts.iterations = 100;
     
-
+    opts.fid = fopen('spg1,txt','w');
     [x_spg,r_spg,g_spg,info_spg] = spgl1(C, f, 0, 1e-3, zeros(size(g)), opts);
-    %opts.decTol = 1e-4;
-    %opts.iterations = 50;
-    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(C, f, 0, 1-3, zeros(size(g)), opts);
+    opts.fid = fopen('pqn1.txt','w');
+    sigma_ref = info_spg.rNorm;
+    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(C, f, 0, 1-3, zeros(size(g)), opts,sigma_ref);
 
-    figure; 
+    save info1 info_spg info_pqn
+    
+    h = figure; 
     subplot(3,1,1); plot(g); title('original sparse signal');axis tight;
     subplot(3,1,2); plot(x_spg);title('x_spg');axis tight;
     subplot(3,1,3); plot(x_pqn);title('x_pqn');axis tight;
-
-    figure('Name','Solution paths')
+    saveas(h,'deconvolution result1.jpg');
+   
+    h = figure('Name','Solution paths');
     plot(info_spg.xNorm1,info_spg.rNorm2,info_pqn.xNorm1,info_pqn.rNorm2);hold on
     scatter(info_spg.xNorm1,info_spg.rNorm2);
     scatter(info_pqn.xNorm1,info_pqn.rNorm2);hold off
     legend('spg','pqn')
     axis tight
-
+    saveas(h,'solution path1.jpg');
 
 
     

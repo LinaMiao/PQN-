@@ -1,12 +1,9 @@
 %% add tools
 cd ./functions
 addpath(genpath(pwd))
-cd ../../..
+cd ../../../../../../../functions/
 addpath(genpath(pwd))
-cd ./seismic/l1migration/
-addpath(genpath('/Volumes/Users/linamiao/Dropbox/PQN/pqnl1'))
-rmpath('/Volumes/Users/linamiao/Dropbox/PQN/pqnl1/minConF/')
-
+cd ../experiments/help_spgl1/modifying/task16bpdn/seismic/l1migration/
 addpath(genpath('/users/slic/linamiao/Documents/Documents/Tools/Matlabtools/tristan/'))
 
 % addpath(genpath('e:\research\Tools\tristan'))
@@ -158,12 +155,15 @@ figure; plot(aa);title('curvelet cooeficient')
 % frequency domain
 A = A'*C';
 b = B;
-opts.iterations = 60;
 tt = C*temp;
 
 % l1 migration
+opts.iterations = 50;
+opts.fid = fopen('log_freq_spg.txt', 'w'); 
 [x_spg,r_spg,g_spg,info_spg] = spgl1(A, b, 0, 1e-3, zeros(size(tt)), opts);
-[x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(A, b, 0, 1e-3, zeros(size(tt)), opts);
+opts.fid = fopen('log_freq_pqn.txt', 'w'); 
+sigma_ref = info_spg.rNorm;
+[x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(A, b, 0, 1e-3, zeros(size(tt)), opts,sigma_ref);
 
 m_spg = C'*x_spg;
 m_pqn = C'*x_pqn;
@@ -188,8 +188,12 @@ saveas(h,'solution path freq.jpg')
 % time domain
 At = At'*C';
 b = Bt; 
-[xt_spg,rt_spg,gt_spg,infot_spg] = spgl1(A, b, 0, 1e-3, zeros(size(tt)), opts);
-[xt_pqn,rt_pqn,gt_pqn,infot_pqn] = pqnl1_2(A, b, 0, 1e-3, zeros(size(tt)), opts);
+opts.iterations = 50;
+opts.fid = fopen('log_time_spg.txt', 'w'); 
+[xt_spg,rt_spg,gt_spg,infot_spg] = spgl1(At, b, 0, 1e-3, zeros(size(tt)), opts);
+opts.fid = fopen('log_time_pqn.txt', 'w'); 
+sigma_ref = infot_spg.rNorm;
+[xt_pqn,rt_pqn,gt_pqn,infot_pqn] = pqnl1_2(At, b, 0, 1e-3, zeros(size(tt)), opts,sigma_ref);
 
 
 m_spg = C'*xt_spg;
@@ -199,7 +203,7 @@ nz = length(z);
 figure; subplot(2,1,1);imagesc(reshape(real(m_spg),nz,nr));
 subplot(2,1,2);imagesc(reshape(real(m_pqn),nz,nr));
 infot_spg
-info_pqn
+infot_pqn
 
 % show result
 h = figure('Name','Solution paths');
@@ -209,5 +213,5 @@ scatter(infot_pqn.xNorm1,infot_pqn.rNorm2);hold off
 legend('SPGL1','PQNl1')
 axis tight
 
-save info_time infot_spg infot_pqn m_spg m_pqn
+save info_time infot_spg infot_pqn_spg m_pqn
 saveas(h,'solution path time.jpg')

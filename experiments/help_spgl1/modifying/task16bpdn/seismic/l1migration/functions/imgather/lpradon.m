@@ -51,7 +51,7 @@ i = sqrt(-1);
 
 % window the input, only radon on a cirtain frequency range
 % plausible frequency range
-df = 2*pi*(1/nt);
+df = faxis(2) - faxis(1);
 idxmin = find((faxis>fmin-df/2).*(faxis<=fmin+df/2),1);
 idxmax = find((faxis>fmax-df/2).*(faxis<=fmax+df/2),1);
 % mask matrix
@@ -99,7 +99,7 @@ D = zeros(nt,nh);
 i = sqrt(-1);
 
 % apply the adjoint of mask used in forward function
-df = 2*pi*(1/nt);
+df = faxis(2) - faxis(1);
 idxmin = find((faxis>fmin-df/2).*(faxis<=fmin+df/2),1);
 idxmax = find((faxis>fmax-df/2).*(faxis<=fmax+df/2),1);
 % mask matrix
