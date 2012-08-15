@@ -1,5 +1,5 @@
-% if without [Q,R] = qr(A',0);  A = Q';
-clear;close all;
+% if [Q,R] = qr(A',0);  A = Q';
+
 %% addpath for PQN working
 cd ../../../../functions;
 addpath(genpath(pwd))
@@ -7,7 +7,7 @@ cd ../experiments/help_spgl1/modifying/task10strictvssparse
 
 %% sample matrix
 m = 120; n = 512; k = 20; % m rows, n cols, k nonzeros.
-A  = randn(m,n); %[Q,R] = qr(A',0);  A = Q';
+A  = randn(m,n); [Q,R] = qr(A',0);  A = Q';
 
 opts.decTol = 1e-3;
 opts.optTol = 1e-4;
@@ -39,26 +39,26 @@ b_compress  = A*x0_compress + 0.005 * randn(m,1);
 %% reconstruct
 tau = norm(x0,1);
 % sparse
-opts.fid = fopen('sparse_spg2.txt','w');
+opts.fid = fopen('sparse_spg.txt','w');
 [x_spg1,r_spgl,g_spgl,info_spg1] = spgl1(A, b0, tau, [], zeros(size(A,2),1), opts);
-opts.fid = fopen('sparse_pqn2.txt','w');
-opts.optTol = info_spg1.rNorm;
+opts.fid = fopen('sparse_pqn.txt','w');
+opts.optTol = info_spg1.rNorm2(end);
 [x_sparse,r_sparse,g_sparse,info_sparse] = pqnl1_2(A, b0, tau,[], zeros(size(A,2),1), opts); % Find BP sol'n.
 
-h = figure;title('sparse resconstruct2'); 
+h = figure;title('sparse resconstruct'); 
 subplot(2,1,1);plot(x_spg1);title('spg');axis('tight')
 subplot(2,1,2);plot(x_sparse);title('pqn');axis('tight')
 saveas(h,'sparse resconstruct')
 
 % compress
 tau = norm(x0_compress,1);
-opts.fid = fopen('compress_spg2.txt','w');
+opts.fid = fopen('compress_spg.txt','w');
 [x_spg2,r_spg2,g_spg2,info_spg2] = spgl1(A, b_compress, tau,[], zeros(size(A,2),1), opts); % Find BP sol'n.
-opts.fid = fopen('compress_pqn2.txt','w');
-opts.optTol = info_spg2.rNorm;
+opts.fid = fopen('compress_pqn.txt','w');
+opts.optTol = info_spg1.rNorm2(end);
 [x_compress,r_compress,g_compress,info_compress] = pqnl1_2(A, b_compress, tau, [], zeros(size(A,2),1), opts); % Find BP sol'n.
 
-h = figure; title('compress resconstruct2'); 
+h = figure; title('compress resconstruct'); 
 subplot(2,1,1);plot(x_spg2);title('spg');axis('tight')
 subplot(2,1,2);plot(x_compress);title('pqn');axis('tight')
 saveas(h,'compress resconstruct')
@@ -70,7 +70,7 @@ info_spg1
 info_compress
 info_spg2
 
-h = figure;title('strict sparse Solution paths2')
+h = figure;title('strict sparse Solution paths')
 plot(info_sparse.xNorm1,info_sparse.rNorm2,info_spg1.xNorm1,info_spg1.rNorm2);hold on
 scatter(info_sparse.xNorm1,info_sparse.rNorm2);
 scatter(info_spg1.xNorm1,info_spg1.rNorm2);hold off
@@ -78,7 +78,7 @@ legend('pqn','spg')
 axis tight
 saveas(h,'strict sparse Solution paths')
 
-h = figure;title('compress signal Solution paths2')
+h = figure;title('compress signal Solution paths')
 plot(info_compress.xNorm1,info_compress.rNorm2,info_spg2.xNorm1,info_spg2.rNorm2);hold on
 scatter(info_compress.xNorm1,info_compress.rNorm2);
 scatter(info_spg2.xNorm1,info_spg2.rNorm2);hold off

@@ -1,0 +1,27 @@
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :      120      No. columns           :      512
+ Initial tau           : 1.91e+01      Two-norm of b         : 6.58e-01
+ Optimality tol        : 8.67e-16      Target one-norm of x  : 1.91e+01
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :      100
+
+  Iter      Objective   Relative Gap      gNorm   stepG    nnzX    nnzG
+     0  6.5814998e-01  2.6622196e+00   1.39e-01     0.0       0       0
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     1.00000e+00     7.06883e-16     1.28429e-14
+Optimal solution found
+     1  7.0688280e-16  1.9536013e-15   9.92e-17     0.0     512       0
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         2          1          4     1.00000e+00     3.96475e-16     7.14806e-15
+Function value changing by less than optTol
+     2  3.9647508e-16  1.0074521e-15   5.26e-17     0.0     512       0
+ EXIT -- Optimal solution found
+
+ Products with A     :       5        Total time   (secs) :     0.0
+ Products with A'    :       5        Project time (secs) :     0.0
+ Newton iterations   :       0        Mat-vec time (secs) :     0.0
+

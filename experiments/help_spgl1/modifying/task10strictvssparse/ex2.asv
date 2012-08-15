@@ -1,5 +1,5 @@
 % if without [Q,R] = qr(A',0);  A = Q';
-clear;close all;
+
 %% addpath for PQN working
 cd ../../../../functions;
 addpath(genpath(pwd))
@@ -42,7 +42,7 @@ tau = norm(x0,1);
 opts.fid = fopen('sparse_spg2.txt','w');
 [x_spg1,r_spgl,g_spgl,info_spg1] = spgl1(A, b0, tau, [], zeros(size(A,2),1), opts);
 opts.fid = fopen('sparse_pqn2.txt','w');
-opts.optTol = info_spg1.rNorm;
+opts.optTol = info_spg1.rNorm2(end);
 [x_sparse,r_sparse,g_sparse,info_sparse] = pqnl1_2(A, b0, tau,[], zeros(size(A,2),1), opts); % Find BP sol'n.
 
 h = figure;title('sparse resconstruct2'); 
@@ -55,7 +55,6 @@ tau = norm(x0_compress,1);
 opts.fid = fopen('compress_spg2.txt','w');
 [x_spg2,r_spg2,g_spg2,info_spg2] = spgl1(A, b_compress, tau,[], zeros(size(A,2),1), opts); % Find BP sol'n.
 opts.fid = fopen('compress_pqn2.txt','w');
-opts.optTol = info_spg2.rNorm;
 [x_compress,r_compress,g_compress,info_compress] = pqnl1_2(A, b_compress, tau, [], zeros(size(A,2),1), opts); % Find BP sol'n.
 
 h = figure; title('compress resconstruct2'); 
