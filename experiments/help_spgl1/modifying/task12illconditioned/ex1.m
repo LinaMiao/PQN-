@@ -1,9 +1,7 @@
 %% addpath for PQN working
-%addpath(genpath('/Volumes/Users/linamiao/Dropbox/PQN/'))
-cd ../../../../pqnl1;
+cd ../../../../functions;
 addpath(genpath(pwd))
 cd ../experiments/help_spgl1/modifying/task12illconditioned
-rmpath('/Volumes/Users/linamiao/Dropbox/PQN/pqnl1/minConF/')
 %stream = RandStream.getGlobalStream;
 %reset(stream);
 
@@ -45,16 +43,17 @@ for m = [ 200 250 300 350 400 450 500]
     tau = norm(x0,1);
 
     %% Lasso
+    opts.fid = fopen(strcat(['spg' num2str(i)]),'w');
     [x_spg,r_spg,g_spg,info_spg] = spgl1(A_ill, b, tau, [], zeros(size(x0)), opts); 
+    
+    opts.fid = fopen(strcat(['pqn ' num2str(i)]),'w');
     [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(A_ill, b, tau, [], zeros(size(x0)), opts);
 
-    figure(i);
+    h = figure(i);
     subplot(2,1,1); plot(x_spg);title('x_spg')
     subplot(2,1,2); plot(x_pqn);title('x_pqn')
-    
+    saveas(h,strcat([' ' num2str(i)]));
+
     i = i + 1;
-    %% BPDN
-%     which spgl1
-%     which pqnl1_2
-%     which minConf_PQN_pqnl1
+
 end
