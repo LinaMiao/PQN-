@@ -1,0 +1,22 @@
+
+ ==================================================================================
+ SPGL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    12800      No. columns           :    34341
+ Initial tau           : 1.25e+03      Two-norm of b         : 4.15e+00
+ Optimality tol        : 1.00e-04      Target one-norm of x  : 1.25e+03
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :      200
+
+  Iter      Objective   Relative Gap      gNorm   stepG    nnzX    nnzG
+     0  4.1499926e+00  2.9184637e+01   2.01e-01     0.0       0       0
+     1  7.8424814e-01  7.5233689e+01   5.86e-02    -0.3   12683       0
+     2  4.0703852e-01  3.3350628e+00   2.71e-03     0.0   21028       0
+     3  4.0585247e-01  5.5587345e-14   4.54e-17     0.0   20651       0
+
+ EXIT -- Optimal solution found
+
+ Products with A     :       6        Total time   (secs) :     3.0
+ Products with A'    :       4        Project time (secs) :     0.0
+ Newton iterations   :       0        Mat-vec time (secs) :     2.9
+ Line search its     :       2        Subspace iterations :       0
+

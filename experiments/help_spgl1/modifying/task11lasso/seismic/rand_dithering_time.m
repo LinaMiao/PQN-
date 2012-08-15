@@ -1,16 +1,11 @@
     
-%% Installation
-% download and install 
+%% addpath of tools and functions
 clear; close all;
 cd ./simu_functions/
 addpath(genpath(pwd))
-cd ../..
+cd ../../../../../../functions/;
 addpath(genpath(pwd))
-cd ../../../../pqnl1;
-addpath(genpath(pwd))
-
-cd ../experiments/help_spgl1/modifying/task11lasso/seismic
-rmpath('/Volumes/Users/linamiao/Dropbox/PQN/pqnl1/minConF/')
+cd ../experiments/help_spgl1/modifying/task11lasso/seismic/
 %% Data
 % Number of time samples
 nt = 1024;
@@ -82,31 +77,30 @@ C = opCurvelet(nt, ns);
 C_D = C*D;
 sort_CD = sort(abs(C_D),'descend');
 figure;plot(sort_CD);title('sorted curvelet coefficients')
-%% exercises
-% Construct the measurement operator A. HINT: See 'Constructing a suitable 
-% matrix' in Lab 7.
+%% 
 % Using spgl1, estimate the curvelet coefficients xest.
 
-fid = fopen('log.txt', 'w'); 
-p_list = [.5];
-
-p = p_list;
+p = .5;
 D_RM1 = opSimSourceRandTimeDither([nt,nr,ns],[p*nt*ns,1],ns);
 simD1 = D_RM1*D;
 A = D_RM1*C';
 
+% calculate tau
 options = spgSetParms('optTol', 1e-4, 'iterations', 1000);%, 'fid', fid); 
 xestspg = spgl1(A,simD1,0,1e-3,[],options);
 tau = norm(xestspg,1);
 %tau = 2.2072179e+05;
 
+
+
+% spg and pqn
 options = spgSetParms('optTol', 1e-4, 'iterations', 200);%, 'fid', fid); 
+options.fid = fopen('rand_dthering_time_spg.txt','w');
 xinit = zeros(size(A,2),1);
 
-which spgl1
-%keyboard;
-xestspg = spgl1(A,simD1,tau,[],xinit,options);
-%options.iterations = 100;
+[xestspg,~,~,infospg] = spgl1(A,simD1,tau,[],xinit,options);
+options.fid = fopen('rand_dithering_time_pqn.txt','w');
+options.optTol = infospg.rNorm;
 xestpqn = pqnl1_2(A,simD1,tau,[],xinit,options);
 fspg = C'*xestspg;
 snrspg = SNR(D,fspg);
@@ -116,19 +110,19 @@ snrpqn = SNR(D,fpqn);
 
 
     
-figure; 
+h = figure; 
 subplot(1,2,1);imagesc(reshape(fspg,nt,ns)); colormap(gray);
 title(strcat(['p = .5, SNR=' num2str(snrspg(1)) 'dB']))
 subplot(1,2,2);imagesc(reshape(fspg-D,nt,ns)); colormap(gray);
 title('difference')
+saveas(h,'rand_dithering_time_spg.jpg')
 
-
-figure; 
+h = figure; 
 subplot(1,2,1);imagesc(reshape(fpqn,nt,ns)); colormap(gray);
 title(strcat(['p = .5, SNR=' num2str(snrpqn(1)) 'dB']))
 subplot(1,2,2);imagesc(reshape(fpqn-D,nt,ns)); colormap(gray);
 title('difference')
-
+saveas(h,'rand_dithering_time_pqn.jpg');
 
 %% if given known strict sparse vector
 [m n] = size(A); k = .2*round(n/log(m));
@@ -138,25 +132,30 @@ b0  = A*x0;
 
 tau = norm(x0,1);
 
-options = spgSetParms('optTol', 1e-4, 'iterations', 200);%, 'fid', fid); 
+options = spgSetParms('optTol', 1e-4, 'iterations', 200);%, 'fid', fid);
+options.fid = fopen('dithering_time_sparse_spg,txt','w');
 xinit = zeros(size(A,2),1);
 
-xestspg = spgl1(A,b0,tau,[],xinit,options);
+[xestspg,~,~,infospg] = spgl1(A,b0,tau,[],xinit,options);
+tau = infospg.rNorm(end);
+options.fid = fopen('dithering_time_sparse_pqn,txt','w');
 xestpqn = pqnl1_2(A,b0,tau,[],xinit,options);
 snrspg = SNR(x0,xestspg);
 snrpqn = SNR(x0,xestpqn);
 
-figure('Name','strcit sparse vector SPG'); 
+h = figure('Name','strcit sparse vector SPG'); 
 subplot(2,1,1);plot(xestspg); 
 title(strcat(['p = .5, SNR=' num2str(snrspg) 'dB']))
 subplot(2,1,2);plot(xestspg - x0);
 title('difference')
+saveas(h,'dithering_time_sparse_spg,jpg');
 
-figure('Name','strcit sparse vector PQN'); 
+h = figure('Name','strcit sparse vector PQN'); 
 subplot(2,1,1);plot(xestpqn); 
 title(strcat(['p = .5, SNR=' num2str(snrpqn) 'dB']))
 subplot(2,1,2);plot(xestpqn - x0);
 title('difference')
+saveas(h,'dithering_time_sparse_pqn.jpg');
 
 %% if given known compressible vector
 nn = linspace(0,1,n);
@@ -170,23 +169,29 @@ b_compress  = A*x0_compress + 0.005 * randn(m,1);
 tau = norm(x0_compress,1);
 
 options = spgSetParms('optTol', 1e-4, 'iterations', 200);%, 'fid', fid); 
+options.fid = fopen('dithering_time_compress_spg','w');
 xinit = zeros(size(A,2),1);
 
-xestspg = spgl1(A,b_compress,tau,[],xinit,options);
+[xestspg,~,~,infospg] = spgl1(A,b_compress,tau,[],xinit,options);
+tau = infospg.rNorm(end);
+options.fid = fopen('dithering_time_compress_pqn','w');
+
 xestpqn = pqnl1_2(A,b_compress,tau,[],xinit,options);
 snrspg = SNR(x0_compress,xestspg);
 snrpqn = SNR(x0_compress,xestpqn);
 
-figure('Name','compressible vector SPG'); 
+h = figure('Name','compressible vector SPG'); 
 subplot(2,1,1);plot(xestspg); 
 title(strcat(['p = .5, SNR=' num2str(snrspg) 'dB']))
 subplot(2,1,2);plot(xestspg - x0_compress);
 title('difference')
+saveas(h,'dithering_time_compress_spg.jpg');
 
-figure('Name','compressible vector PQN'); 
+h = figure('Name','compressible vector PQN'); 
 subplot(2,1,1);plot(xestpqn); 
 title(strcat(['p = .5, SNR=' num2str(snrpqn) 'dB']))
 subplot(2,1,2);plot(xestpqn - x0_compress);
 title('difference')
+saveas(h,'dithering_time_compress_pqn,jpg');
 
 

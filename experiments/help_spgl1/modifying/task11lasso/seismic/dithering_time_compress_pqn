@@ -1,0 +1,39 @@
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    12800      No. columns           :    73051
+ Initial tau           : 2.18e-01      Two-norm of b         : 1.02e+01
+ Optimality tol        : 1.00e-04      Target one-norm of x  : 2.18e-01
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :      200
+
+  Iter      Objective   Relative Gap      gNorm   stepG    nnzX    nnzG
+     0  1.0230912e+01  6.2704482e-03   1.51e+00     0.0       0       0
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     1.00000e+00     1.01998e+01     3.14843e-02
+         2          1         10     1.00000e+00     1.01998e+01     2.91128e-02
+         3          1         18     1.00000e+00     1.01997e+01     8.68755e-03
+         4          1         26     1.00000e+00     1.01997e+01     8.17161e-03
+         5          1         42     1.00000e+00     1.01997e+01     4.40099e-03
+         6          1         55     1.00000e+00     1.01997e+01     4.35024e-03
+         7          1         71     1.00000e+00     1.01997e+01     4.56824e-03
+         8          1         85     1.00000e+00     1.01997e+01     3.91046e-03
+         9          1        101     1.00000e+00     1.01997e+01     1.78487e-03
+        10          1        113     1.00000e+00     1.01997e+01     7.40521e-04
+        11          1        127     1.00000e+00     1.01997e+01     6.26183e-04
+        12          1        135     1.00000e+00     1.01997e+01     5.05880e-04
+        13          1        143     1.00000e+00     1.01997e+01     1.64299e-04
+        14          1        151     1.00000e+00     1.01997e+01     5.43063e-05
+        15          1        161     1.00000e+00     1.01997e+01     9.85070e-06
+        16          1        171     1.00000e+00     1.01997e+01     1.20911e-06
+Directional Derivative below optTol
+        17          2        324    -0.00000e+00     1.01997e+01     1.20911e-06
+Step size below optTol
+    17  1.0199740e+01  1.1257915e-09   1.42e+00     0.0       5       0
+ EXIT -- Optimal solution found
+
+ Products with A     :      30        Total time   (secs) :    17.3
+ Products with A'    :      30        Project time (secs) :    22.3
+ Newton iterations   :       0        Mat-vec time (secs) :     1.8
+
