@@ -20,8 +20,8 @@ clear;  %close all;
 %% define velocity model
 
 % grid
-z = 0:10:500;
-x = 0:10:500;
+z = 0:10:1000;
+x = 0:10:1000;
 [o,d,n] = grid2odn(z,x);
 [zz,xx] = ndgrid(z,x);
 
@@ -29,7 +29,7 @@ x = 0:10:500;
 m0 = 2500 + 0*xx;
 
 % circular perturbation with radius 250 m and strenth 10%
-dv = 0*xx; dv((xx-250).^2 + (zz-250).^2 <= 50^2) = .1*2500;
+dv = 0*xx; dv((xx-500).^2 + (zz-500).^2 <= 100^2) = .1*2500;
 
 % plot
 m  = m0 + dv;

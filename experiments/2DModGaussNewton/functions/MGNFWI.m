@@ -1,4 +1,4 @@
-function [results,u,misfit,Mig] = MGNFWI(vel_initial,Dobs,wavelet,model,opts,solver)
+function [results,u,misfit,Mig,info] = MGNFWI(vel_initial,Dobs,wavelet,model,opts,solver,sigma_ref)
 % This function allows us to process modified gauss-newton full-waveform 
 % inversion, in which each gauss-newton subproblem is solved with the L1 solver
 % (SPGL1) developed by Ewout van den Berg and Michael P. Friedlander. 
@@ -78,6 +78,10 @@ function [results,u,misfit,Mig] = MGNFWI(vel_initial,Dobs,wavelet,model,opts,sol
 tic 
 %========================== initializing =============================
 
+if not(exist('sigma_ref','var'))
+    sigma_ref = 1e-10; % will not be reached for most of the time
+end
+
 model.t0 = wavelet.t0;
 model.f0 = wavelet.f0;
 mod_def = Set_Paras( ...
@@ -103,6 +107,7 @@ wavelet.faxis = wavelet.faxis(index);
 [model.nz,model.nx] = size(vel_initial);
 model.nx_border   = floor(model.xbound*model.nx);
 model.nz_border   = floor(model.zbound*model.nz);
+misfit = [];
 
 % do some check
 if ~isfield(model,'sp'),model.sp = round(linspace(1,model.nx,model.nshot));end
@@ -120,7 +125,7 @@ opts_def = Set_Paras( ...
 'verbosity',1, ...					  % 0=quiet, 1=some output, 2=more output.
 'bpTol',1e-3, ...				      % help spgl1. Tolerance for identifying a basis pursuit solution.
 'optTol',1e-3, ...                    % help spgl1. Optimality tolerance (default is 1e-4).
-'decTol',5e-2, ...                    % help spgl1. Larger decTol means more frequent Newton updates...
+'decTol',1e-3, ...                    % help spgl1. Larger decTol means more frequent Newton updates...
 'quitPareto',0, ...                   % help spgl1. 1, quit; 2 not quit
 'sptrans','yes', ...                  % sparse basis
 'ny',model.nz, ...					  % size of the basis
@@ -214,7 +219,7 @@ while length(wavelet.faxis)>=model.nf && wavelet.faxis(1)<model.maxf && iter<=op
 		end
 		
 		% GN optimization
-		[dmw_nl,info] = GN_up(Mig,du_nl,opts,dmw_c,solver);
+		[dmw_nl,info] = GN_up(Mig,du_nl,opts,dmw_c,solver,sigma_ref);
 		resultinfo{end + 1} = info;
 		dmw_nl      = reshape(real(dmw_nl),model.nz,model.nx);
 		dmw_nl      = Smoothedge(dmw_nl,model.water,1);

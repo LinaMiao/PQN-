@@ -1,4 +1,4 @@
-function [img,info] = GN_up(K,b,opts,img_guess,solver)
+function [img,info] = GN_up(K,b,opts,img_guess,solver,sigma_ref)
 % This function solve the linear problem Kx = b by using L1 solver
 % SPGL1,
 % 
@@ -10,7 +10,7 @@ function [img,info] = GN_up(K,b,opts,img_guess,solver)
 % 	b: measurement
 % 	opts: parameters for spgl1; help spgl1 in matlab for more information.
 % 	img_guess: initial guess for x
-%   solver : 1 spgl1    2 pqnl1    3 pqnl1_passing
+%   solver : 1 spgl1    2 pqnl1_2
 % Output,
 % 	img: recovered result
 % 	info: a structure with optimization information
@@ -41,7 +41,7 @@ l1itr= 0;
 if ~isempty(img_guess)
 	x = C * img_guess(:);
 else
-	x = [];
+	x = zeros(size(A,2),1);
 end
 rNorm = [];
 
@@ -53,14 +53,7 @@ while l1itr < opts.iterations
         rNorm = [rNorm;info.rNorm2];
     else
         if solver == 2
-            % opts.iterations = 10;
-            [x,r,g,info]= pqnl1(A,b,norm(x,1),0,x,opts);
-            l1itr = l1itr + info.iter;
-            rNorm = [rNorm;info.rNorm2];
-        end
-    
-        if solver == 3
-             [x,r,g,info]= pqnl1_2(A,b,norm(x,1),0,x,opts);
+             [x,r,g,info]= pqnl1_2(A,b,norm(x,1),0,x,opts,sigma_ref);
             l1itr = l1itr + info.iter;
             rNorm = [rNorm;info.rNorm2];
         end

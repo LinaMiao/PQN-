@@ -1,0 +1,47 @@
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :     1530      No. columns           :    10201
+ Initial tau           : 0.00e+00      Two-norm of b         : 4.72e+01
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       50
+
+     0  4.7244918e+01  0.0000000e+00   1.00e+00  1.106e+03     0.0       0       0  2.0177505e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     1.25000e-01     4.68269e+01     2.26997e+00
+break of testUpdateTau
+     1  4.6826930e+01  2.0237397e+00   1.00e+00  9.503e+02     0.0       1       0  4.3251353e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         2          1          4     3.12500e-02     4.56916e+01     4.43431e+00
+         3          1         12     1.00000e+00     3.50102e+01     8.56569e+00
+         4          1         18     1.00000e+00     3.03793e+01     8.54515e+00
+         5          1         29     1.00000e+00     2.71708e+01     8.45546e+00
+         6          1         39     1.00000e+00     2.57461e+01     8.38274e+00
+         7          1         48     1.00000e+00     2.48331e+01     8.31126e+00
+         8          1         59     1.00000e+00     2.42404e+01     8.22758e+00
+         9          1         68     1.00000e+00     2.38728e+01     8.16578e+00
+        10          1         84     1.00000e+00     2.36016e+01     8.10876e+00
+rNorm less than sigma_ref
+rNorm less than sigma_ref
+
+ EXIT -- residual less than sigma ref
+
+ Products with A     :      21        Total time   (secs) :   206.7
+ Products with A'    :      21        Project time (secs) :     2.3
+ Newton iterations   :       2        Mat-vec time (secs) :   177.7
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :     1530      No. columns           :    10201
+ Initial tau           : 4.33e+00      Two-norm of b         : 4.72e+01
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       50
+
+rNorm less than sigma_ref
