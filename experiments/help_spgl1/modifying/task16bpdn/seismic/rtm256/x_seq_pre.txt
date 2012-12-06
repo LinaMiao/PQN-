@@ -1,0 +1,11 @@
+
+ ==================================================================================
+ SPGL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    69632      No. columns           :   524288
+ Initial tau           : 0.00e+00      Two-norm of b         : 9.02e+02
+ Optimality tol        : 1.00e-04      Target objective      : 1.00e-03
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :       10
+
+  Iter      Objective   Relative Gap  Rel Error      gNorm   stepG    nnzX    nnzG            tau
+     0  9.0190492e+02  0.0000000e+00   1.00e+00  2.037e+02     0.0       0       0  3.9927466e+03

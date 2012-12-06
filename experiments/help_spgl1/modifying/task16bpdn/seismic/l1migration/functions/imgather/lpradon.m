@@ -56,6 +56,8 @@ idxmin = find((faxis>fmin-df/2).*(faxis<=fmin+df/2),1);
 idxmax = find((faxis>fmax-df/2).*(faxis<=fmax+df/2),1);
 % mask matrix
 mask = zeros(size(D));
+idxmin = max(1,idxmin);
+idxmax = min(length(D),idxmax);
 mask(idxmin:idxmax,:) = 1;
 % apply mask
 D = mask.*D;
@@ -104,6 +106,8 @@ idxmin = find((faxis>fmin-df/2).*(faxis<=fmin+df/2),1);
 idxmax = find((faxis>fmax-df/2).*(faxis<=fmax+df/2),1);
 % mask matrix
 mask = zeros(size(M));
+idxmin = max(1,idxmin);
+idxmax = min(length(D),idxmax);
 mask(idxmin:idxmax,:) = 1;
 % apply adjoint mask
 M = opDiag(mask)'*vec(M);

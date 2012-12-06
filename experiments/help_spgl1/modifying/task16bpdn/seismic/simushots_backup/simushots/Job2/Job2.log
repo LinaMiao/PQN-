@@ -1,0 +1,424 @@
+
+Begin PBS Prologue Mon Oct 29 13:20:48 PDT 2012
+Job ID:	84596.mega
+Userid:	linamiao
+Group:	slic
+Rsrcs:	nodes=1:ppn=1+4:ppn=4,pmem=3999999kb,walltime=48:00:00
+Queue:	matwork
+Nodes:		node05 node08 node12 node13 node33
+
+Note: Global temporary storage set at /scratch/tmp/84596.mega
+      (i.e., $PBS_TMPDIR == $GLOBTMPDIR)
+
+End PBS Prologue Mon Oct 29 13:20:48 PDT 2012
+
+Node file: /var/spool/pbs/aux//84596.mega
+Starting SMPD on node05 node08 node12 node13 node33  ...
+ssh node05 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -s -phrase MATLAB -port 24596
+ssh node08 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -s -phrase MATLAB -port 24596
+ssh node12 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -s -phrase MATLAB -port 24596
+ssh node13 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -s -phrase MATLAB -port 24596
+ssh node33 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -s -phrase MATLAB -port 24596
+All SMPDs launched
+"/usr/local/MATLAB/64bit/R2011B/bin/mw_mpiexec" -phrase MATLAB -port 24596 -l -n 17 -machinefile /var/spool/pbs/aux//84596.mega -genvlist MDCE_DECODE_FUNCTION,MDCE_STORAGE_LOCATION,MDCE_STORAGE_CONSTRUCTOR,MDCE_JOB_LOCATION,MDCE_DEBUG "/usr/local/MATLAB/64bit/R2011B/bin/worker" -parallel
+[0]                            < M A T L A B (R) >
+[0]                  Copyright 1984-2011 The MathWorks, Inc.
+[0]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[0]                              August 13, 2011
+[15]                            < M A T L A B (R) >
+[15]                  Copyright 1984-2011 The MathWorks, Inc.
+[15]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[15]                              August 13, 2011
+[14]                            < M A T L A B (R) >
+[14]                  Copyright 1984-2011 The MathWorks, Inc.
+[14]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[14]                              August 13, 2011
+[13]                            < M A T L A B (R) >
+[13]                  Copyright 1984-2011 The MathWorks, Inc.
+[13]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[13]                              August 13, 2011
+[16]                            < M A T L A B (R) >
+[16]                  Copyright 1984-2011 The MathWorks, Inc.
+[16]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[16]                              August 13, 2011
+[1]                            < M A T L A B (R) >
+[1]                  Copyright 1984-2011 The MathWorks, Inc.
+[1]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[1]                              August 13, 2011
+[3]                            < M A T L A B (R) >
+[3]                  Copyright 1984-2011 The MathWorks, Inc.
+[3]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[3]                              August 13, 2011
+[11]                            < M A T L A B (R) >
+[11]                  Copyright 1984-2011 The MathWorks, Inc.
+[11]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[11]                              August 13, 2011
+[12]                            < M A T L A B (R) >
+[12]                  Copyright 1984-2011 The MathWorks, Inc.
+[12]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[12]                              August 13, 2011
+[9]                            < M A T L A B (R) >
+[9]                  Copyright 1984-2011 The MathWorks, Inc.
+[9]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[9]                              August 13, 2011
+[2]                            < M A T L A B (R) >
+[2]                  Copyright 1984-2011 The MathWorks, Inc.
+[2]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[2]                              August 13, 2011
+[10]                            < M A T L A B (R) >
+[10]                  Copyright 1984-2011 The MathWorks, Inc.
+[10]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[10]                              August 13, 2011
+[4]                            < M A T L A B (R) >
+[4]                  Copyright 1984-2011 The MathWorks, Inc.
+[4]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[4]                              August 13, 2011
+[0] 
+[0]To get started, type one of these: helpwin, helpdesk, or demo.
+[0]For product information, visit www.mathworks.com.
+[0] 
+[3] 
+[1] 
+[4] 
+[1]To get started, type one of these: helpwin, helpdesk, or demo.
+[3]To get started, type one of these: helpwin, helpdesk, or demo.
+[1]For product information, visit www.mathworks.com.
+[1] 
+[3]For product information, visit www.mathworks.com.
+[3] 
+[4]To get started, type one of these: helpwin, helpdesk, or demo.
+[4]For product information, visit www.mathworks.com.
+[4] 
+[2] 
+[2]To get started, type one of these: helpwin, helpdesk, or demo.
+[2]For product information, visit www.mathworks.com.
+[2] 
+[16] 
+[14] 
+[16]To get started, type one of these: helpwin, helpdesk, or demo.
+[16]For product information, visit www.mathworks.com.
+[16] 
+[14]To get started, type one of these: helpwin, helpdesk, or demo.
+[14]For product information, visit www.mathworks.com.
+[14] 
+[13] 
+[13]To get started, type one of these: helpwin, helpdesk, or demo.
+[13]For product information, visit www.mathworks.com.
+[13] 
+[15] 
+[15]To get started, type one of these: helpwin, helpdesk, or demo.
+[15]For product information, visit www.mathworks.com.
+[15] 
+[12] 
+[10] 
+[12]To get started, type one of these: helpwin, helpdesk, or demo.
+[10]To get started, type one of these: helpwin, helpdesk, or demo.
+[12]For product information, visit www.mathworks.com.
+[10]For product information, visit www.mathworks.com.
+[12] 
+[10] 
+[9] 
+[11] 
+[9]To get started, type one of these: helpwin, helpdesk, or demo.
+[9]For product information, visit www.mathworks.com.
+[9] 
+[11]To get started, type one of these: helpwin, helpdesk, or demo.
+[11]For product information, visit www.mathworks.com.
+[11] 
+[7]                            < M A T L A B (R) >
+[7]                  Copyright 1984-2011 The MathWorks, Inc.
+[7]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[7]                              August 13, 2011
+[8]                            < M A T L A B (R) >
+[8]                  Copyright 1984-2011 The MathWorks, Inc.
+[8]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[8]                              August 13, 2011
+[6]                            < M A T L A B (R) >
+[6]                  Copyright 1984-2011 The MathWorks, Inc.
+[6]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[6]                              August 13, 2011
+[5]                            < M A T L A B (R) >
+[5]                  Copyright 1984-2011 The MathWorks, Inc.
+[5]                    R2011b (7.13.0.564) 64-bit (glnxa64)
+[5]                              August 13, 2011
+[4]Welcome to WaveLab v 850 
+[2]Welcome to WaveLab v 850 
+[4]Setting Global Variables
+[2]Setting Global Variables
+[1]Welcome to WaveLab v 850 
+[1]Setting Global Variables
+[3]Welcome to WaveLab v 850 
+[3]Setting Global Variables
+[4]Pathnames Successfully Set
+[1]Pathnames Successfully Set
+[3]Pathnames Successfully Set
+[2]Pathnames Successfully Set
+[9]Welcome to WaveLab v 850 
+[12]Welcome to WaveLab v 850 
+[11]Welcome to WaveLab v 850 
+[10]Welcome to WaveLab v 850 
+[11]Setting Global Variables
+[9]Setting Global Variables
+[10]Setting Global Variables
+[12]Setting Global Variables
+[12]Pathnames Successfully Set
+[11]Pathnames Successfully Set
+[9]Pathnames Successfully Set
+[10]Pathnames Successfully Set
+[7] 
+[5] 
+[5]To get started, type one of these: helpwin, helpdesk, or demo.
+[7]To get started, type one of these: helpwin, helpdesk, or demo.
+[6] 
+[5]For product information, visit www.mathworks.com.
+[7]For product information, visit www.mathworks.com.
+[5] 
+[7] 
+[8] 
+[6]To get started, type one of these: helpwin, helpdesk, or demo.
+[6]For product information, visit www.mathworks.com.
+[6] 
+[8]To get started, type one of these: helpwin, helpdesk, or demo.
+[8]For product information, visit www.mathworks.com.
+[8] 
+[15]Welcome to WaveLab v 850 
+[13]Welcome to WaveLab v 850 
+[14]Welcome to WaveLab v 850 
+[16]Welcome to WaveLab v 850 
+[15]Setting Global Variables
+[13]Setting Global Variables
+[14]Setting Global Variables
+[16]Setting Global Variables
+[0]Welcome to WaveLab v 850 
+[0]Setting Global Variables
+[2]Welcome to ShearLab v 1.00 
+[4]Welcome to ShearLab v 1.00 
+[3]Welcome to ShearLab v 1.00 
+[1]Welcome to ShearLab v 1.00 
+[11]Welcome to ShearLab v 1.00 
+[12]Welcome to ShearLab v 1.00 
+[10]Welcome to ShearLab v 1.00 
+[9]Welcome to ShearLab v 1.00 
+[2]Pathnames Successfully Set
+[3]Pathnames Successfully Set
+[1]Pathnames Successfully Set
+[4]Pathnames Successfully Set
+[12]Pathnames Successfully Set
+[11]Pathnames Successfully Set
+[10]Pathnames Successfully Set
+[9]Pathnames Successfully Set
+[0]Pathnames Successfully Set
+[15]Pathnames Successfully Set
+[14]Pathnames Successfully Set
+[13]Pathnames Successfully Set
+[16]Pathnames Successfully Set
+[0]Welcome to ShearLab v 1.00 
+[16]Welcome to ShearLab v 1.00 
+[15]Welcome to ShearLab v 1.00 
+[14]Welcome to ShearLab v 1.00 
+[13]Welcome to ShearLab v 1.00 
+[0]Pathnames Successfully Set
+[15]Pathnames Successfully Set
+[14]Pathnames Successfully Set
+[16]Pathnames Successfully Set
+[13]Pathnames Successfully Set
+[5]Welcome to WaveLab v 850 
+[6]Welcome to WaveLab v 850 
+[7]Welcome to WaveLab v 850 
+[5]Setting Global Variables
+[7]Setting Global Variables
+[6]Setting Global Variables
+[8]Welcome to WaveLab v 850 
+[8]Setting Global Variables
+[8]Pathnames Successfully Set
+[7]Pathnames Successfully Set
+[6]Pathnames Successfully Set
+[5]Pathnames Successfully Set
+[8]Welcome to ShearLab v 1.00 
+[5]Welcome to ShearLab v 1.00 
+[6]Welcome to ShearLab v 1.00 
+[7]Welcome to ShearLab v 1.00 
+[8]Pathnames Successfully Set
+[7]Pathnames Successfully Set
+[6]Pathnames Successfully Set
+[5]Pathnames Successfully Set
+[0]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[0]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[0]Unable to supply constructor for scheduler . This is an unknown type
+[0]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[0]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[0]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[0]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[0]Error in distcomp_evaluate_filetask (line 41)
+[0]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[5]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[5]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[5]Unable to supply constructor for scheduler . This is an unknown type
+[5]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[5]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[5]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[5]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[5]Error in distcomp_evaluate_filetask (line 41)
+[5]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[7]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[7]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[7]Unable to supply constructor for scheduler . This is an unknown type
+[7]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[7]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[7]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[7]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[7]Error in distcomp_evaluate_filetask (line 41)
+[7]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[6]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[6]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[6]Unable to supply constructor for scheduler . This is an unknown type
+[6]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[6]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[6]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[6]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[6]Error in distcomp_evaluate_filetask (line 41)
+[6]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[8]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[8]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[8]Unable to supply constructor for scheduler . This is an unknown type
+[8]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[8]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[8]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[8]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[8]Error in distcomp_evaluate_filetask (line 41)
+[8]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[2]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[2]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[2]Unable to supply constructor for scheduler . This is an unknown type
+[2]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[2]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[2]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[2]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[2]Error in distcomp_evaluate_filetask (line 41)
+[2]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[9]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[9]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[9]Unable to supply constructor for scheduler . This is an unknown type
+[9]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[9]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[9]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[9]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[9]Error in distcomp_evaluate_filetask (line 41)
+[9]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[4]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[4]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[4]Unable to supply constructor for scheduler . This is an unknown type
+[4]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[4]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[4]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[4]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[4]Error in distcomp_evaluate_filetask (line 41)
+[4]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[3]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[3]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[3]Unable to supply constructor for scheduler . This is an unknown type
+[3]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[3]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[3]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[3]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[3]Error in distcomp_evaluate_filetask (line 41)
+[3]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[10]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[10]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[10]Unable to supply constructor for scheduler . This is an unknown type
+[10]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[10]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[10]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[10]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[10]Error in distcomp_evaluate_filetask (line 41)
+[10]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[1]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[1]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[1]Unable to supply constructor for scheduler . This is an unknown type
+[1]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[1]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[1]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[1]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[1]Error in distcomp_evaluate_filetask (line 41)
+[1]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[11]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[11]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[11]Unable to supply constructor for scheduler . This is an unknown type
+[11]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[11]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[11]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[11]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[11]Error in distcomp_evaluate_filetask (line 41)
+[11]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[12]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[12]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[12]Unable to supply constructor for scheduler . This is an unknown type
+[12]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[12]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[12]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[12]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[12]Error in distcomp_evaluate_filetask (line 41)
+[12]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[16]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[16]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[16]Unable to supply constructor for scheduler . This is an unknown type
+[16]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[16]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[16]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[16]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[16]Error in distcomp_evaluate_filetask (line 41)
+[16]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[13]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[13]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[13]Unable to supply constructor for scheduler . This is an unknown type
+[13]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[13]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[13]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[13]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[13]Error in distcomp_evaluate_filetask (line 41)
+[13]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[14]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[14]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[14]Unable to supply constructor for scheduler . This is an unknown type
+[14]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[14]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[14]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[14]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[14]Error in distcomp_evaluate_filetask (line 41)
+[14]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[15]2012-10-29 13:20:57 | Error constructing local scheduler object of type . The error thrown was : 
+[15]Error using distcomp/getSchedulerUDDConstructor (line 30)
+[15]Unable to supply constructor for scheduler . This is an unknown type
+[15]Error in distcomp_evaluate_filetask>iCreateSchedulerObject (line 474)
+[15]schedulerConstructor = distcomp.getSchedulerUDDConstructor(type);
+[15]Error in distcomp_evaluate_filetask>iSetup (line 407)
+[15]        sched = iCreateSchedulerObject(root, schedulerType, storage);
+[15]Error in distcomp_evaluate_filetask (line 41)
+[15]    runprop = iSetup(handlers, mdceDebugEnabled, varargin);
+[0]Sending a stop signal to all the labs...
+[0]2012-10-29 13:36:59 | About to exit MATLAB normally
+
+Stopping SMPD on  node05 node08 node12 node13 node33 ...
+ssh node05 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -shutdown -phrase MATLAB -port 24596
+ssh node08 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -shutdown -phrase MATLAB -port 24596
+ssh node12 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -shutdown -phrase MATLAB -port 24596
+ssh node13 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -shutdown -phrase MATLAB -port 24596
+ssh node33 "/usr/local/MATLAB/64bit/R2011B/bin/mw_smpd" -shutdown -phrase MATLAB -port 24596
+Exiting with code: 0
+
+Begin PBS Epilogue Mon Oct 29 13:37:06 PDT 2012
+Job ID:		84596.mega
+Username:	linamiao
+Group:		slic
+Job Name:	Job2
+Session:	8749
+Limits:		nodes=1:ppn=1+4:ppn=4,pmem=3999999kb,walltime=48:00:00
+Resources:	cput=00:00:00,mem=5116kb,vmem=157032kb,walltime=00:16:13
+Queue:		matwork
+Account:		
+Nodes:	node05 node08 node12 node13 node33
+Cleaning /scratch/tmp/84596.mega
+Killing leftovers...
+
+End PBS Epilogue Mon Oct 29 13:37:07 PDT 2012
+

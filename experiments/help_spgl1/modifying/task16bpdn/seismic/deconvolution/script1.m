@@ -12,12 +12,12 @@ t = [0:.001:2]';
 N = length(t);
 
 % true signal g has approx k spikes with random amplitudes
-k = 20;
+k = 5;
 g = zeros(N,1);
 g(randi(N,k,1)) = sign(randn(k,1));%randn(k,1);
 
 % filter
-w = (1-2*1e3*(t-.2).^2).*exp(-1e3*(t-.2).^2);
+w = (1-3*1e3*(t-.1).^2).*exp(-3*1e3*(t-.1).^2);
 
 % plot
 figure;
@@ -45,25 +45,26 @@ xlabel('t [s]');ylabel('f(t)');
 title('convolution result')
 
 
-
-
+save temp C f 
+load temp
 %% spgl1 and pqnl1
     %% lasso
-    opts.iterations = 100;
+    opts.iterations = 2000;
     tau = norm(g,1);
 
     [x_spg,r_spg,g_spg,info_spg] = spgl1(C, f, tau, [], zeros(size(g)), opts);
-    opts.iterations = 50;
-    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(C, f, tau, [], zeros(size(g)), opts);
+    opts.iterations = 2000;
+    sigma_ref = info_spg.rNorm;
+    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(C, f, tau, [], zeros(size(g)), opts, sigma_ref);
 
-    figure; 
-    subplot(3,1,1); plot(g); title('original sparse signal')
-    subplot(3,1,2); plot(x_spg);title('x_spg')
-    subplot(3,1,3); plot(x_pqn);title('x_pqn')
-    
+    h = figure; 
+    subplot(3,1,1); plot(g); title('original sparse signal'); axis tight
+    subplot(3,1,2); plot(x_spg);title('spg recovery'); axis tight
+    subplot(3,1,3); plot(x_pqn);title('pqn recovery'); axis tight
+    saveas(h,'spgvspqn')
     %% BPDN
     % noisy signal
-    f = C*g+ 1e-3*randn(N,1);
+    f = C*g;
 
     % plot
     figure;
@@ -71,21 +72,21 @@ title('convolution result')
     xlabel('t [s]');ylabel('f(t)');
     title('convolution result')
     
-    opts.iterations = 100;
+    opts.iterations = 500;
     
     opts.fid = fopen('spg1,txt','w');
-    [x_spg,r_spg,g_spg,info_spg] = spgl1(C, f, 0, 1e-3, zeros(size(g)), opts);
+    [x_spg,r_spg,g_spg,info_spg] = spgl1(C, f, tau, 1e-4, zeros(size(g)), opts);
     opts.fid = fopen('pqn1.txt','w');
     sigma_ref = info_spg.rNorm;
-    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(C, f, 0, 1-3, zeros(size(g)), opts,sigma_ref);
+    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(C, f, tau, 1-4, zeros(size(g)), opts,sigma_ref);
 
     save info1 info_spg info_pqn
     
     h = figure; 
     subplot(3,1,1); plot(g); title('original sparse signal');axis tight;
-    subplot(3,1,2); plot(x_spg);title('x_spg');axis tight;
-    subplot(3,1,3); plot(x_pqn);title('x_pqn');axis tight;
-    saveas(h,'deconvolution result1.jpg');
+    subplot(3,1,2); plot(x_spg);title('x_spg');axis tight;ylim([-1,1])
+    subplot(3,1,3); plot(x_pqn);title('x_pqn');axis tight;ylim([-1 1])
+    saveas(h,'deconvolution_result1');
    
     h = figure('Name','Solution paths');
     plot(info_spg.xNorm1,info_spg.rNorm2,info_pqn.xNorm1,info_pqn.rNorm2);hold on
@@ -93,7 +94,7 @@ title('convolution result')
     scatter(info_pqn.xNorm1,info_pqn.rNorm2);hold off
     legend('spg','pqn')
     axis tight
-    saveas(h,'solution path1.jpg');
+    saveas(h,'solution_path1');
 
 
     

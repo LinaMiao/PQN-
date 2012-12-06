@@ -5,7 +5,12 @@ clear;close all
 cd ../../../../../../functions;
 addpath(genpath(pwd))
 cd ../experiments/help_spgl1/modifying/task16bpdn/seismic/simushots/
+cd ./simu_functions/
+addpath(genpath(pwd))
+cd ..
 
+%% set rand generator and sedd
+rng(3216,'twister');
 %% original data
 % Number of time samples
 nt = 1024;
@@ -19,7 +24,7 @@ D = ReadSuFast('GulfOfSuez178.su');
 D = reshape(D,nt,nr,ns);
 
 % Select small subset
-D = D(1:256,30,1:50);
+D = D(1:end,30,1:end);
 
 % Define new data sizes
 [nt,nr,ns] = size(D);
@@ -36,12 +41,13 @@ xlabel('Shot number'); ylabel('Time sample')
 
 
 %% random weights of simu shots
-p = .5;
-nse = p*ns;
-SS = rand(nse,ns);
-Dt = opDirac(nt);
-Dr = opDirac(nr);
-RM = opKron(SS,Dr,Dt);
+p = .8;
+nse = round(p*ns);
+% SS = rand(nse,ns);
+% Dt = opDirac(nt);
+% Dr = opDirac(nr);
+% RM = opKron(SS,Dr,Dt);
+RM = opKron(opGaussian(ns, nse)',opDirac(nt));
 
 x_test = rand(size(RM,2),1);
 y_test = rand(size(RM,1),1);
@@ -58,7 +64,8 @@ imagesc(reshape(simD1,nt,nse)); colormap(gray); colorbar;
 
 %% sparsifying transform
 % Use this to create a Curvelet SPOT operator:
-C = opCurvelet(nt, ns);
+%C = opCurvelet(nt, ns);
+C = opDFT2(nt,ns);
 
 % Transform the data into the Curvelet domain and plot the sorted coefficients 
 C_D = C*D;
@@ -74,7 +81,7 @@ options = spgSetParms('optTol', 1e-4, 'iterations', 200);%, 'fid', fid);
 options.fid = fopen('rand_weights_shots_spg.txt','w');
 [x_spg,r_spg,g_spg,info_spg] = spgl1(A, simD1, 0, 0, zeros(size(A,2),1), options); % Find BP sol'n.
 options.fid = fopen('rand_weights_shots_pqn.txt','w');
-sigma_ref = info_spg.rNorm;
+sigma_ref = info_spg.rNorm * .99;
 [x_pqn1,r_pqn1,g_pqn1,info_pqn1] = pqnl1_2(A, simD1, 0, 0, zeros(size(A,2),1), options,sigma_ref); % Find BP sol'n.
 fspg = C'*x_spg;
 snrspg = SNR(D,fspg);
@@ -82,17 +89,17 @@ fpqn = C'*x_pqn1;
 snrpqn = SNR(D,fpqn);
 
 h = figure; 
-subplot(1,2,1);imagesc(reshape(fspg,nt,ns)); colormap(gray);
+subplot(1,2,1);imagesc(real(reshape(fspg,nt,ns))); colormap(gray);
 title(strcat(['p = .5, SNR=' num2str(snrspg) 'dB']))
-subplot(1,2,2);imagesc(reshape(fspg-D,nt,ns)); colormap(gray);
+subplot(1,2,2);imagesc(real(reshape(fspg-D,nt,ns))); colormap(gray);
 title('difference')
 saveas(h,'rand_weights_shots_spg.jpg')
 
 
 h = figure; 
-subplot(1,2,1);imagesc(reshape(fpqn,nt,ns)); colormap(gray);
+subplot(1,2,1);imagesc(real(reshape(fpqn,nt,ns))); colormap(gray);
 title(strcat(['p = .5, SNR=' num2str(snrpqn) 'dB']))
-subplot(1,2,2);imagesc(reshape(fpqn-D,nt,ns)); colormap(gray);
+subplot(1,2,2);imagesc(real(reshape(fpqn-D,nt,ns))); colormap(gray);
 title('difference')
 saveas(h,'rand_weights_shots_pqn.jpg')
 

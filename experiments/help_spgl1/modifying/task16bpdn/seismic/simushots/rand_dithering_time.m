@@ -4,6 +4,9 @@ clear;close all
 cd ../../../../../../functions;
 addpath(genpath(pwd))
 cd ../experiments/help_spgl1/modifying/task16bpdn/seismic/simushots/
+
+%% fix rand seeds
+rng(3216,'twister');
 %% Data
 % Number of time samples
 nt = 1024;
@@ -20,7 +23,7 @@ D = ReadSuFast('GulfOfSuez178.su');
 D = reshape(D,nt,nr,ns);
 
 % Select small subset
-D = D(1:256,30,1:100);
+D = D(1:512,30,1:60);
 
 % Define new data sizes
 [nt,nr,ns] = size(D);
@@ -35,22 +38,22 @@ title('Original data (receiver gather)');
 xlabel('Shot number'); ylabel('Time sample')
 %% Set the patameters for randomized experiment
 I  = eye(10);
-RM1 = opSimSourceRandTimeDither([10 1 10], [5*10 1], 10);
+RM1 = opSimSourceRandTimeDither([10 1 10], [7.5*10 1], 10);
 
 % plot very long time series
-figure;
+h = figure;
 plot(I(:),1:length(I(:)),'*');xlim([0.5 1.5]);ylabel('time samples');
-
+saveas(h,'fulltimeshots')
 % plot compressed series
-figure;
-plot(RM1*I(:),1:length(RM1*I(:)),'o');xlim([0.5 1.5]);ylabel('time samples');
-
+h = figure;
+plot(RM1*I(:),1:length(RM1*I(:)),'o');xlim([0.5 1.5]);ylim([0 75]);ylabel('time samples');
+saveas(h,'dithertimeshots')
 
 %%
-% Construct the sampling operator RM for p = 0.5 that works on the vectorized 
+% Construct the sampling operator RM for p = 0.75 that works on the vectorized 
 % version of the data using opSimSourceRandTimeDither.
-p = .5;
-D_RM1 = opSimSourceRandTimeDither([nt,nr,ns],[p*nt*ns,1],ns);
+p = .75;
+D_RM1 = opSimSourceRandTimeDither([nt,nr,ns],[round(p*nt)*ns,1],ns);
 
 % Test the sampling operator with the dottest.
 x_test = rand(size(D_RM1,2),1);
@@ -64,7 +67,7 @@ fprintf('In dottest error:%5.5e\n',error);
 % Generate simultaneous data simD and display the result.
 simD1 = D_RM1*D;
 figure;
-imagesc(reshape(simD1,p*nt,ns)); colormap(gray); colorbar;
+imagesc(reshape(simD1,round(p*nt),ns)); colormap(gray); colorbar;
 
 
 %% sparsifying transform
@@ -81,13 +84,13 @@ figure;plot(sort_CD);title('sorted curvelet coefficients')
 % Using spgl1, estimate the curvelet coefficients xest.
 
 fid = fopen('log.txt', 'w'); 
-p = [.5];
-D_RM1 = opSimSourceRandTimeDither([nt,nr,ns],[p*nt*ns,1],ns);
+p = [.75];
+D_RM1 = opSimSourceRandTimeDither([nt,nr,ns],[round(p*nt)*ns,1],ns);
 simD1 = D_RM1*D;
 A = D_RM1*C';
 
 % BPDN
-options = spgSetParms('optTol', 1e-4, 'iterations', 200);%, 'fid', fid); 
+options = spgSetParms('optTol', 1e-4, 'iterations', 500);%, 'fid', fid); 
 options.fid = fopen('rand_dthering_time_spg.txt','w');
 [x_spg,r_spg,g_spg,info_spg] = spgl1(A, simD1, 0, 0, zeros(size(A,2),1), options); % Find BP sol'n.
 options.fid = fopen('rand_dithering_time_pqn.txt','w');
@@ -100,17 +103,21 @@ snrpqn = SNR(D,fpqn);
 
 h = figure; 
 subplot(1,2,1);imagesc(reshape(fspg,nt,ns)); colormap(gray);
-title(strcat(['p = .5, SNR=' num2str(snrspg(1)) 'dB']))
+title(strcat(['p = .75, SNR=' num2str(snrspg(1)) 'dB']))
+v = caxis;
 subplot(1,2,2);imagesc(reshape(fspg-D,nt,ns)); colormap(gray);
 title('difference')
-saveas(h,'rand_dithering_time_spg.jpg')
+caxis(v)
+saveas(h,'rand_dithering_time_spg')
 
 h = figure; 
 subplot(1,2,1);imagesc(reshape(fpqn,nt,ns)); colormap(gray);
-title(strcat(['p = .5, SNR=' num2str(snrpqn(1)) 'dB']))
+title(strcat(['p = .75, SNR=' num2str(snrpqn(1)) 'dB']))
+v = caxis;
 subplot(1,2,2);imagesc(reshape(fpqn-D,nt,ns)); colormap(gray);
 title('difference')
-saveas(h,'rand_dithering_time_pqn.jpg');
+caxis(v)
+saveas(h,'rand_dithering_time_pqn');
 
 % show result
 h = figure('Name','Solution paths');
@@ -119,6 +126,8 @@ scatter(info_spg.xNorm1,info_spg.rNorm2);
 scatter(info_pqn1.xNorm1,info_pqn1.rNorm2);hold off
 legend('SPGL1','PQNl1')
 axis tight
-saveas(h,'solution_path_dithering_time.jpg');
+saveas(h,'solution_path_dithering_time');
+
+
 
 

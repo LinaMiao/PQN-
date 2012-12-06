@@ -1,0 +1,348 @@
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    24000      No. columns           :    56352
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.12e+03
+ Optimality tol        : 1.00e-04      Target objective      : 1.00e-03
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :       80
+
+     0  2.1241865e+03  0.0000000e+00   1.00e+00  1.981e+06     0.0       0       0  2.2780696e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.53613e-06     2.12418e+03     2.27806e+00
+         2          1         13     1.00000e+00     2.00286e+03     3.54178e+00
+         3          1         27     1.00000e+00     1.96056e+03     4.55606e+00
+         4          1         41     1.00000e+00     1.92940e+03     4.55614e+00
+         5          1         49     1.00000e+00     1.90778e+03     4.55612e+00
+         6          1         57     1.00000e+00     1.89159e+03     4.52669e+00
+         7          1         68     1.00000e+00     1.88501e+03     4.52080e+00
+         8          1         79     1.00000e+00     1.87774e+03     4.52540e+00
+         9          1         87     1.00000e+00     1.87154e+03     4.52088e+00
+        10          1         95     1.00000e+00     1.85970e+03     4.50219e+00
+        11          1        103     1.00000e+00     1.85679e+03     4.55614e+00
+        12          1        114     1.00000e+00     1.85583e+03     4.55358e+00
+break of testUpdateTau
+    12  1.8558310e+03  1.4193326e-01   1.00e+00  2.213e+05     0.0     256       0  1.7842545e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        13          1          4     5.17248e-06     1.85582e+03     2.01179e+01
+        14          1         11     1.00000e+00     1.84013e+03     2.08579e+01
+        15          1         19     1.00000e+00     1.64983e+03     3.52622e+01
+        16          1         30     1.00000e+00     1.56253e+03     3.56582e+01
+        17          1         41     1.00000e+00     1.52862e+03     3.56592e+01
+        18          1         55     1.00000e+00     1.43008e+03     3.56833e+01
+        19          1         69     1.00000e+00     1.39749e+03     3.55030e+01
+        20          1         82     1.00000e+00     1.35896e+03     3.56553e+01
+        21          1         91     1.00000e+00     1.28954e+03     3.56851e+01
+        22          1        100     1.00000e+00     1.27532e+03     3.56327e+01
+        23          1        111     1.00000e+00     1.26693e+03     3.56655e+01
+        24          1        121     1.00000e+00     1.26114e+03     3.54306e+01
+Directional Derivative below optTol
+    25  1.2611401e+03  8.7560891e-01   1.00e+00  7.939e+04     0.0    1230       0  3.7877267e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        26          1          4     8.87691e-06     1.26112e+03     5.54648e+01
+        27          1         38     5.00000e-01     1.22863e+03     6.25643e+01
+        28          1         44     1.00000e+00     1.16600e+03     6.27996e+01
+Directional Derivative below optTol
+    29  1.1659998e+03  2.3246961e+01   1.00e+00  4.361e+05     0.0    1402       0  4.0994866e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        30          1          4     6.02574e-06     1.16591e+03     6.59168e+01
+Directional Derivative below optTol
+    31  1.1659115e+03  2.5036877e+01   1.00e+00  4.325e+05     0.0    1402       0  4.4137598e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        32          1          4     6.03900e-06     1.16582e+03     6.90591e+01
+Directional Derivative below optTol
+    33  1.1658167e+03  2.6792651e+01   1.00e+00  4.287e+05     0.0    1402       0  4.7307924e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        34          1          4     6.05335e-06     1.16572e+03     7.22290e+01
+Directional Derivative below optTol
+    35  1.1657157e+03  2.8511226e+01   1.00e+00  4.246e+05     0.0    1402       0  5.0508459e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        36          1          4     6.06882e-06     1.16561e+03     7.54291e+01
+Directional Derivative below optTol
+    37  1.1656083e+03  3.0189393e+01   1.00e+00  4.202e+05     0.0    1402       0  5.3741998e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        38          1          4     6.08545e-06     1.16549e+03     7.86621e+01
+Directional Derivative below optTol
+    39  1.1654948e+03  3.1823781e+01   1.00e+00  4.155e+05     0.0    1402       0  5.7011530e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        40          1          4     6.10325e-06     1.16538e+03     8.19534e+01
+Directional Derivative below optTol
+    41  1.1653752e+03  3.3476791e+01   1.00e+00  4.112e+05     0.0    1402       0  6.0313954e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        42          1          4     6.12227e-06     1.16525e+03     8.52338e+01
+Directional Derivative below optTol
+    43  1.1652495e+03  3.5052683e+01   1.00e+00  4.064e+05     0.0    1402       0  6.3655207e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        44          1          4     6.14220e-06     1.16512e+03     8.85968e+01
+Directional Derivative below optTol
+    45  1.1651178e+03  3.6628441e+01   1.00e+00  4.018e+05     0.0    1402       0  6.7034119e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        46          1          4     6.16376e-06     1.16498e+03     9.19536e+01
+Directional Derivative below optTol
+    47  1.1649801e+03  3.8087903e+01   1.00e+00  3.962e+05     0.0    1402       0  7.0459735e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        48          1          4     6.18626e-06     1.16484e+03     9.54010e+01
+Directional Derivative below optTol
+    49  1.1648368e+03  3.9576756e+01   1.00e+00  3.912e+05     0.0    1402       0  7.3928493e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        50          1          4     6.21051e-06     1.16469e+03     9.88477e+01
+Directional Derivative below optTol
+    51  1.1646877e+03  4.0899657e+01   1.00e+00  3.848e+05     0.0    1402       0  7.7453284e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        52          1          4     6.23575e-06     1.16453e+03     1.02394e+02
+Directional Derivative below optTol
+    53  1.1645334e+03  4.2290780e+01   1.00e+00  3.794e+05     0.0    1402       0  8.1027643e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        54          1          4     6.26289e-06     1.16437e+03     1.05897e+02
+Directional Derivative below optTol
+    55  1.1643734e+03  4.3454516e+01   1.00e+00  3.723e+05     0.0    1402       0  8.4669217e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        56          1          4     6.29109e-06     1.16421e+03     1.09639e+02
+Directional Derivative below optTol
+    57  1.1642084e+03  4.4704646e+01   1.00e+00  3.662e+05     0.0    1402       0  8.8370528e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        58          1          4     6.32107e-06     1.16404e+03     1.13311e+02
+Directional Derivative below optTol
+    59  1.1640383e+03  4.5943838e+01   1.00e+00  3.602e+05     0.0    1402       0  9.2131811e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        60          1          4     6.35195e-06     1.16386e+03     1.17101e+02
+Directional Derivative below optTol
+    61  1.1638631e+03  4.7016898e+01   1.00e+00  3.533e+05     0.0    1402       0  9.5965692e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        62          1          4     6.38501e-06     1.16368e+03     1.20886e+02
+Directional Derivative below optTol
+    63  1.1636830e+03  4.8050152e+01   1.00e+00  3.464e+05     0.0    1402       0  9.9875118e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        64          1          4     6.41930e-06     1.16350e+03     1.24816e+02
+Directional Derivative below optTol
+    65  1.1634986e+03  4.8996139e+01   1.00e+00  3.391e+05     0.0    1402       0  1.0386696e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        66          1          4     6.45659e-06     1.16331e+03     1.28837e+02
+Directional Derivative below optTol
+    67  1.1633098e+03  4.9912371e+01   1.00e+00  3.319e+05     0.0    1402       0  1.0794377e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        68          1          4     6.49519e-06     1.16312e+03     1.32884e+02
+Directional Derivative below optTol
+    69  1.1631164e+03  5.0506201e+01   1.00e+00  3.230e+05     0.0    1402       0  1.1213186e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        70          1          4     6.53521e-06     1.16292e+03     1.37101e+02
+Directional Derivative below optTol
+    71  1.1629200e+03  5.1330277e+01   1.00e+00  3.158e+05     0.0    1402       0  1.1641407e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        72          1          4     6.57790e-06     1.16272e+03     1.41383e+02
+Directional Derivative below optTol
+    73  1.1627193e+03  5.1632844e+01   1.00e+00  3.058e+05     0.0    1402       0  1.2083436e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        74          1          4     6.62220e-06     1.16252e+03     1.45775e+02
+Directional Derivative below optTol
+    75  1.1625164e+03  5.2211633e+01   1.00e+00  2.978e+05     0.0    1402       0  1.2537270e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        76          1          4     6.66880e-06     1.16231e+03     1.50295e+02
+Directional Derivative below optTol
+    77  1.1623105e+03  5.2391398e+01   1.00e+00  2.879e+05     0.0    1402       0  1.3006576e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        78          1          4     6.71843e-06     1.16210e+03     1.55035e+02
+Directional Derivative below optTol
+    79  1.1621028e+03  5.2498234e+01   1.00e+00  2.779e+05     0.0    1402       0  1.3492492e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        80          1          4     6.77153e-06     1.16189e+03     1.59865e+02
+    80  1.1618930e+03  5.2488541e+01   1.00e+00  2.678e+05     0.0    1402       0  1.3996664e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      84        Total time   (secs) :  2252.4
+ Products with A'    :      84        Project time (secs) :   107.4
+ Newton iterations   :      30        Mat-vec time (secs) :  2026.0
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    24000      No. columns           :    56352
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.12e+03
+ Optimality tol        : 1.00e-04      Target objective      : 1.00e-03
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :       80
+
+     0  2.1241865e+03  0.0000000e+00   1.00e+00  1.981e+06     0.0       0       0  2.2780696e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.53613e-06     2.12418e+03     2.27806e+00
+         2          1         13     1.00000e+00     2.00286e+03     3.54178e+00
+         3          1         23     1.00000e+00     1.94890e+03     4.55613e+00
+         4          1         32     1.00000e+00     1.91411e+03     4.55614e+00
+         5          1         43     1.00000e+00     1.89014e+03     4.52186e+00
+         6          1         53     1.00000e+00     1.88440e+03     4.51741e+00
+         7          1         63     1.00000e+00     1.87319e+03     4.50676e+00
+         8          1         72     1.00000e+00     1.86543e+03     4.49725e+00
+         9          1         80     1.00000e+00     1.86188e+03     4.49128e+00
+        10          1         90     1.00000e+00     1.85726e+03     4.49748e+00
+        11          1        100     1.00000e+00     1.85620e+03     4.49393e+00
+break of testUpdateTau
+    11  1.8562033e+03  5.0522568e-02   1.00e+00  1.396e+05     0.0     298       0  2.6954173e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        12          1          4     5.36973e-06     1.85619e+03     2.91699e+01
+        13          1         30     1.00000e+00     1.69093e+03     5.29591e+01
+        14          1         39     1.00000e+00     1.43400e+03     5.38962e+01
+        15          1         49     1.00000e+00     1.43193e+03     5.39083e+01
+break of testUpdateTau
+    15  1.4319326e+03  2.6762889e+01   1.00e+00  1.024e+06     0.0    3995       0  2.8957406e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        16          1          4     3.17656e-06     1.43187e+03     5.59114e+01
+        17          1         14     1.00000e+00     1.37289e+03     5.60728e+01
+        18          1         26     1.00000e+00     1.35575e+03     5.64973e+01
+Directional Derivative below optTol
+    19  1.3557489e+03  7.2799263e+00   1.00e+00  2.478e+05     0.0    4050       0  3.6375140e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          r        18          1        172     1.00000e+00     1.00123e+04     1.43302e+01
+        19          1        213     1.00000e+00     9.59749e+03     1.41532e+01
+        20          1        253     1.00000e+00     9.07295e+03     1.26044e+01
+        21          1        296     1.00000e+00     8.99972e+03     1.30721e+01
+        22          1        333     1.00000e+00     8.97318e+03     1.29069e+01
+        23          1        373     1.00000e+00     8.94242e+03     1.25238e+01
+        24          1        410     1.00000e+00     8.93079e+03     1.25178e+01
+break of testUpdateTau
+    24  8.9307931e+03  6.0337651e-01   1.00e+00  1.154e+07     0.0      37       0  1.4410100e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+5722e+03  1.2571133e+01   1.00e+00  2.332e+05     0.0    4050       0  5.9487564e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        26          1          4     7.93677e-06     1.35550e+03     8.70250e+01
+Directional Derivative below optTol
+    27  1.3554950e+03  1.4145369e+01   1.00e+00  2.266e+05     0.0    4050       0  6.7597093e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        28          1          4     7.95180e-06     1.35541e+03     9.51337e+01
+Directional Derivative below optTol
+    29  1.3554095e+03  1.5594296e+01   1.00e+00  2.190e+05     0.0    4050       0  7.5984255e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        30          1          4     7.96803e-06     1.35532e+03     1.03520e+02
+Directional Derivative below optTol
+    31  1.3553164e+03  1.6896283e+01   1.00e+00  2.106e+05     0.0    4050       0  8.4707911e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    24000      No. columns           :    56352
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.12e+03
+ Optimality tol        : 1.00e-04      Target objective      : 1.00e-03
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :       80
+
+     0  2.1241865e+03  0.0000000e+00   1.00e+00  1.981e+06     0.0       0       0  2.2780696e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.53613e-06     2.12418e+03     2.27806e+00
+         2          1         13     1.00000e+00     2.00286e+03     3.54178e+00
+         3          1         27     1.00000e+00     1.96056e+03     4.55606e+00
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    24000      No. columns           :    56352
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.12e+03
+ Optimality tol        : 1.00e-04      Target objective      : 1.00e-03
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :       80
+
+     0  2.1241865e+03  0.0000000e+00   1.00e+00  1.981e+06     0.0       0       0  2.2780696e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.53613e-06     2.12418e+03     2.27806e+00
+         2          1         13     1.00000e+00     2.00286e+03     3.54178e+00
+         3          1         27     1.00000e+00     1.96056e+03     4.55606e+00
+         4          1         41     1.00000e+00     1.92940e+03     4.55614e+00
+         5          1         49     1.00000e+00     1.90778e+03     4.55612e+00
+         6          1         57     1.00000e+00     1.89159e+03     4.52669e+00
+         7          1         68     1.00000e+00     1.88501e+03     4.52080e+00
+         8          1         79     1.00000e+00     1.87774e+03     4.52540e+00
+         9          1         87     1.00000e+00     1.87154e+03     4.52088e+00
+        10          1         95     1.00000e+00     1.85970e+03     4.50219e+00
+        11          1        103     1.00000e+00     1.85679e+03     4.55614e+00
+        12          1        114     1.00000e+00     1.85583e+03     4.55358e+00
+break of testUpdateTau
+    12  1.8558310e+03  1.4193326e-01   1.00e+00  2.213e+05     0.0     256       0  1.7842545e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        13          1          4     5.17248e-06     1.85582e+03     2.01179e+01
+        14          1         11     1.00000e+00     1.84013e+03     2.08579e+01
+        15          1         19     1.00000e+00     1.64983e+03     3.52622e+01
+        16          1         30     1.00000e+00     1.56253e+03     3.56582e+01
+        17          1         41     1.00000e+00     1.52862e+03     3.56592e+01
+        18          1         55     1.00000e+00     1.43008e+03     3.56833e+01
+        19          1         69     1.00000e+00     1.39749e+03     3.55030e+01
+        20          1         82     1.00000e+00     1.35896e+03     3.56553e+01
+        21          1         91     1.00000e+00     1.28954e+03     3.56851e+01
