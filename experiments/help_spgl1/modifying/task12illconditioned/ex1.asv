@@ -25,10 +25,10 @@ for m = [ 200 250 300 350 400 450 500]
     s_new(1:min(m,n),1:min(m,n)) = diag(s_ill);
 
 
-    figure;plot(diag(s_new));title('proposed singular values')
+    %figure;plot(diag(s_new));title('proposed singular values')
     A_ill = u'*s_new*v;
 
-    opts.iterations = 600;
+    opts.iterations = 100;
     %opts.verbosity = 0;
 
     % save temp A m n k opts
@@ -47,13 +47,11 @@ for m = [ 200 250 300 350 400 450 500]
     [x_spg,r_spg,g_spg,info_spg] = spgl1(A_ill, b, tau, [], zeros(size(x0)), opts); 
     
     opts.fid = fopen(strcat(['pqn ' num2str(i)]),'w');
-    sigma_ref = info_spg.rNorm;
-    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(A_ill, b, tau, [], zeros(size(x0)), opts,sigma_ref);
+    [x_pqn,r_pqn,g_pqn,info_pqn] = pqnl1_2(A_ill, b, tau, [], zeros(size(x0)), opts);
 
     h = figure(i);
-    subplot(3,1,1); plot(x0);title(x0);title('original signal')
-    subplot(3,1,2); plot(x_spg);title('spg recovery, 679+442 mat-vec');ylim([-1 1])
-    subplot(3,1,3); plot(x_pqn);title('pqn recovery, 60+60 mat-vec');ylim([-1 1])
+    subplot(2,1,1); plot(x_spg);title('x_spg')
+    subplot(2,1,2); plot(x_pqn);title('x_pqn')
     saveas(h,strcat([' ' num2str(i)]));
 
     i = i + 1;
