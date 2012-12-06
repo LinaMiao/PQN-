@@ -1,0 +1,73 @@
+K>> whos A
+  Name          Size                  Bytes  Class    Attributes
+
+  A         20080x24659050            11002  opFoG              
+
+K>> whos B
+  Name          Size             Bytes  Class     Attributes
+
+  B         20080x1             321280  double    complex   
+
+K>> A'*B;
+K>> aaa = ans;
+K>> whos aaa
+  Name             Size                Bytes  Class     Attributes
+
+  aaa       24659050x1             394544800  double    complex   
+
+K>> x_spg = aaa;
+K>> m_spg = S'*x_spg;
+
+op = opImgather([nz,nr,ns],z,xr,xs,t);
+exIm_spg = op' * m_spg;
+exIm_spg = reshape(exIm_spg,nz,nr,ns);
+Im_spg = zeros(nz,nr);
+for i = 1:nz
+    Im_spg(i,:) = diag(squeeze(exIm_spg(i,:,:)));
+end
+
+
+K>> h = figure;
+m = reshape(m,model.n);
+Im_spg = reshape(m,model.n);
+subplot(1,2,1); imagesc(real(m)); colormap(gray);title('original')
+subplot(1,2,2); imagesc(real(Im_spg)); colormap(gray);title('spg')
+saveas(h,'multi_layer_spgonly_only_with_adjoint.jpg')
+K>> figure;imagesc(real(m-Im_spg));
+K>> whos A
+  Name          Size                  Bytes  Class    Attributes
+
+  A         20080x24659050            11002  opFoG              
+
+K>> test = A'*A-opDirac(size(A,2));
+K>> test*ones(size(test,2));
+Error using ones
+Maximum variable size allowed by the program is exceeded.
+ 
+K>> test*ones(size(test,2),1);
+K>> aaaa = ans;
+K>> whos aaaa
+  Name             Size                Bytes  Class     Attributes
+
+  aaaa      24659050x1             394544800  double    complex   
+
+K>> figure;plot(real(aaaa))
+K>> max(aaaa)
+
+ans =
+
+   5.6743e+06 - 1.8229e+05i
+
+K>> figure;spy(test)
+Undefined function 'find' for input arguments of type
+'opMinus'.
+
+Error in spy (line 59)
+[i,j] = find(S);
+ 
+K>> figure;spy(aaaa)
+K>> save multi_layer_spgonly_adjoint.mat
+dbtype multi_layer_spgonly_adjoint.txt
+
+
+diary off
