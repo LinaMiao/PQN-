@@ -1,0 +1,77 @@
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.52e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       50
+
+     0  2.5228641e+03  0.0000000e+00   1.00e+00  7.576e+05     0.0       0       0  8.4017895e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.50000e-01     2.29295e+03     1.05006e+01
+         2          1         28     1.00000e+00     2.12552e+03     1.67889e+01
+         3          1         47     1.00000e+00     1.98714e+03     1.67393e+01
+         4          1         59     1.00000e+00     1.95704e+03     1.67317e+01
+         5          1         69     1.00000e+00     1.95079e+03     1.67244e+01
+break of testUpdateTau
+     5  1.9507924e+03  3.1172823e-01   1.00e+00  7.376e+04     0.0     394       0  5.9996099e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         6          1          4     3.90625e-03     1.94760e+03     6.85023e+01
+break of testUpdateTau
+     6  1.9476042e+03  2.1134945e+00   1.00e+00  7.113e+04     0.0     392       0  1.1332381e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     7.81250e-03     1.93338e+03     1.22662e+02
+break of testUpdateTau
+     7  1.9333764e+03  4.6860605e+00   1.00e+00  7.999e+04     0.0     386       0  1.6005417e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     7.81250e-03     1.91682e+03     1.70565e+02
+break of testUpdateTau
+     8  1.9168155e+03  5.7190650e+00   1.00e+00  6.643e+04     0.0     384       0  2.1536652e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     3.90625e-03     1.90358e+03     2.26720e+02
+break of testUpdateTau
+     9  1.9035771e+03  7.6337218e+00   1.00e+00  6.527e+04     0.0     382       0  2.7088623e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     9.76562e-04     1.89988e+03     2.82453e+02
+break of testUpdateTau
+    10  1.8998800e+03  8.9504969e+00   1.00e+00  6.005e+04     0.0     384       0  3.3099722e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        11          1          4     1.95312e-03     1.89095e+03     3.43166e+02
+break of testUpdateTau
+    11  1.8909541e+03  1.1298807e+01   1.00e+00  6.166e+04     0.0     384       0  3.8899027e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        12          1          4     1.95312e-03     1.88055e+03     4.01833e+02
+break of testUpdateTau
+    12  1.8805544e+03  1.0939742e+01   1.00e+00  5.021e+04     0.0     382       0  4.5942356e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        13          1          4     1.95312e-03     1.87009e+03     4.73216e+02
+break of testUpdateTau
+    13  1.8700927e+03  2.1237071e+01   1.00e+00  8.136e+04     0.0     382       0  5.0241047e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        14          2          4     6.46056e-06     1.86995e+03     5.16200e+02
+break of testUpdateTau
+    14  1.8699535e+03  2.2856036e+01   1.00e+00  8.002e+04     0.0     382       0  5.4611064e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond

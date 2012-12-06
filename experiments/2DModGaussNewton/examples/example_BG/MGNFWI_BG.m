@@ -1,3 +1,14 @@
+%%
+cd ../../../../functions/
+addpath(genpath(pwd));
+cd ../experiments/2DModGaussNewton/
+addpath(genpath(pwd));
+cd ./examples/example_BG/
+addpath(genpath('/users/installs/slic/mat_toolbox/spot-slim/'));
+addpath(genpath('/users/slic/linamiao/Documents/Documents/Tools/Matlabtools/tristan/'))
+
+
+
 % This example produce the result from Modified Gauss-Newten Full-waveform
 % inversion.
 % -----------------------------------------------
@@ -13,7 +24,6 @@
 % ------------------------------------------------
 %
 % setup a random seed
-RandStream.setDefaultStream(RandStream('mt19937ar','seed',1));
 
 %% setup parameters for the experiment
 clear;  close all;
@@ -34,18 +44,46 @@ model.rdep        = 2; % receiver depth, unit: meters
 model.nrec        = 701; % number of receivers
 model.rp          = round(linspace(1,701,701)); % receiver positions
 model.water       = 16; % estimated water depth, unit: number of grid
-
+save model model
 %% load observation data and wavelet information
 load('obdata.mat')
 Dobs        = data; clear data % observation data 
 wavelet     = wavelet;         % wavelet info
 
 
-opts.iterations  = 20;% max iterations for the l1 solver
 
 % load initial model and wavelet info
-load bg2dmodel.mat
 
 %% inversion
-[results] = MGNFWI(vel1,Dobs,wavelet,model,opts);
 
+opts.iterations = 50;
+opts.fid = fopen('spg','w');
+load bg2dmodel.mat
+t = cputime;
+RandStream.setDefaultStream(RandStream('mt19937ar','seed',1));
+[results_1,~,~,~,infospg] = MGNFWI(vel1,Dobs,wavelet,model,opts,1);
+t_spg = cputime - t;
+save results_1 results_1
+save infospg infospg
+
+% pqn
+clear
+load model
+load('obdata.mat')
+Dobs        = data; clear data % observation data 
+wavelet     = wavelet;         % wavelet info
+load bg2dmodel.mat
+% sigma_ref
+load infospg
+sigma_ref = zeros(50,1);
+for i = 1:length(infospg)
+    sigma_ref(i) = infospg{i}.rNorm;
+end
+opts.iterations = 50;
+opts.fid = fopen('pqn','w');
+t = cputime;
+RandStream.setDefaultStream(RandStream('mt19937ar','seed',1));
+[results_2,~,~,~,infopqn] = MGNFWI(vel1,Dobs,wavelet,model,opts,2,sigma_ref);
+t_pqn = cputime - t;
+save results_2 results_2
+save infopqn infopqn

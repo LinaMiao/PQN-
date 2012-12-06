@@ -1,0 +1,498 @@
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 1.20e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  1.2040546e+03  0.0000000e+00   1.00e+00  1.569e+05     0.0       0       0  9.2395484e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.50000e-01     1.08107e+03     1.15494e+01
+         2          1         27     1.00000e+00     9.24797e+02     1.84230e+01
+         3          1         39     1.00000e+00     8.93475e+02     1.84306e+01
+         4          1         57     1.00000e+00     8.68700e+02     1.83402e+01
+         5          1         66     1.00000e+00     8.61291e+02     1.83428e+01
+break of testUpdateTau
+     5  8.6129104e+02  1.9223804e-01   1.00e+00  1.455e+04     0.0     382       0  6.0222929e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         6          1          4     1.56250e-02     8.54709e+02     7.01596e+01
+break of testUpdateTau
+     6  8.5470943e+02  2.2300630e+00   1.00e+00  1.462e+04     0.0     376       0  1.1018877e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     3.90625e-03     8.53684e+02     1.20487e+02
+break of testUpdateTau
+     7  8.5368406e+02  3.8900451e+00   1.00e+00  1.320e+04     0.0     376       0  1.6540097e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     3.90625e-03     8.49071e+02     1.76279e+02
+break of testUpdateTau
+     8  8.4907119e+02  5.4409745e+00   1.00e+00  1.206e+04     0.0     372       0  2.2520218e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     9.76562e-04     8.47906e+02     2.36322e+02
+break of testUpdateTau
+     9  8.4790565e+02  8.3209118e+00   1.00e+00  1.334e+04     0.0     372       0  2.7909819e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     9.76562e-04     8.46562e+02     2.89996e+02
+break of testUpdateTau
+    10  8.4656180e+02  9.3167541e+00   1.00e+00  1.214e+04     0.0     372       0  3.3811871e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      61        Total time   (secs) :  11052.7
+ Products with A'    :      61        Project time (secs) :    98.1
+ Newton iterations   :       7        Mat-vec time (secs) :  10948.6
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.14e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  2.1357792e+03  0.0000000e+00   1.00e+00  4.665e+05     0.0       0       0  9.7788282e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.50000e-01     1.99745e+03     1.22235e+01
+         2          1         34     1.00000e+00     1.79671e+03     1.95326e+01
+         3          1         60     1.00000e+00     1.71171e+03     1.95079e+01
+         4          1         78     1.00000e+00     1.68327e+03     1.94662e+01
+         5          1         86     1.00000e+00     1.67333e+03     1.94475e+01
+break of testUpdateTau
+     5  1.6733259e+03  2.4960835e-01   1.00e+00  4.555e+04     0.0     436       0  7.1248777e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         6          1          4     1.56250e-02     1.67026e+03     8.19167e+01
+break of testUpdateTau
+     6  1.6702645e+03  3.3413853e+00   1.00e+00  6.755e+04     0.0     430       0  1.1255049e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     3.90625e-03     1.66378e+03     1.23590e+02
+break of testUpdateTau
+     7  1.6637762e+03  4.1333792e+00   1.00e+00  5.144e+04     0.0     428       0  1.6636454e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     7.81250e-03     1.65748e+03     1.78647e+02
+break of testUpdateTau
+     8  1.6574789e+03  9.0195851e+00   1.00e+00  7.551e+04     0.0     420       0  2.0274806e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     1.95312e-03     1.65180e+03     2.15418e+02
+break of testUpdateTau
+     9  1.6517954e+03  7.4735787e+00   1.00e+00  5.048e+04     0.0     422       0  2.5679316e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     9.76562e-04     1.64932e+03     2.69577e+02
+break of testUpdateTau
+    10  1.6493199e+03  7.0805050e+00   1.00e+00  3.810e+04     0.0     420       0  3.2819667e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      59        Total time   (secs) :  10805.9
+ Products with A'    :      59        Project time (secs) :   132.5
+ Newton iterations   :       7        Mat-vec time (secs) :  10681.6
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.75e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  2.7543357e+03  0.0000000e+00   1.00e+00  7.924e+05     0.0       0       0  9.5739741e+00
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     2.50000e-01     2.66740e+03     1.19462e+01
+         2          1         24     1.00000e+00     2.34820e+03     1.91286e+01
+         3          1         42     1.00000e+00     2.21880e+03     1.90928e+01
+         4          1         52     1.00000e+00     2.17406e+03     1.90260e+01
+         5          1         66     1.00000e+00     2.16498e+03     1.90097e+01
+break of testUpdateTau
+     5  2.1649770e+03  3.4608989e-01   1.00e+00  9.459e+04     0.0     444       0  5.9124019e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         6          1          4     1.56250e-02     2.15357e+03     6.94286e+01
+break of testUpdateTau
+     6  2.1535726e+03  2.4435868e+00   1.00e+00  1.014e+05     0.0     438       0  1.0485234e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     3.90625e-03     2.15102e+03     1.15490e+02
+break of testUpdateTau
+     7  2.1510184e+03  4.1791998e+00   1.00e+00  9.343e+04     0.0     432       0  1.5437257e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     7.81250e-03     2.14387e+03     1.66135e+02
+break of testUpdateTau
+     8  2.1438654e+03  8.1890431e+00   1.00e+00  1.238e+05     0.0     432       0  1.9150158e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     1.95312e-03     2.13817e+03     2.03575e+02
+break of testUpdateTau
+     9  2.1381730e+03  8.7190286e+00   1.00e+00  1.045e+05     0.0     432       0  2.3526531e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     3.90625e-03     2.11945e+03     2.48186e+02
+break of testUpdateTau
+    10  2.1194527e+03  7.5385990e+00   1.00e+00  7.313e+04     0.0     430       0  2.9669240e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      57        Total time   (secs) :  10453.0
+ Products with A'    :      57        Project time (secs) :    97.7
+ Newton iterations   :       7        Mat-vec time (secs) :  10351.2
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 3.54e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  3.5354077e+03  0.0000000e+00   1.00e+00  1.177e+06     0.0       0       0  1.0615184e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     1.25000e-01     3.32994e+03     1.19421e+01
+         2          1         24     1.00000e+00     3.11439e+03     2.12121e+01
+         3          1         61     1.00000e+00     2.99528e+03     2.11840e+01
+         4          1         79     1.00000e+00     2.88089e+03     2.11401e+01
+         5          1         88     1.00000e+00     2.80602e+03     2.10789e+01
+         6          1         97     1.00000e+00     2.78777e+03     2.11050e+01
+break of testUpdateTau
+     6  2.7877655e+03  3.8102016e-01   1.00e+00  1.161e+05     0.0     422       0  7.7578573e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     1.56250e-02     2.77461e+03     8.92374e+01
+break of testUpdateTau
+     7  2.7746060e+03  3.0422673e+00   1.00e+00  1.550e+05     0.0     420       0  1.2724657e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     1.95312e-03     2.77222e+03     1.38916e+02
+break of testUpdateTau
+     8  2.7722191e+03  4.1435438e+00   1.00e+00  1.303e+05     0.0     422       0  1.8623693e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     3.90625e-03     2.76268e+03     1.98769e+02
+break of testUpdateTau
+     9  2.7626805e+03  7.9562340e+00   1.00e+00  1.663e+05     0.0     422       0  2.3214564e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     1.95312e-03     2.75900e+03     2.45106e+02
+break of testUpdateTau
+    10  2.7590011e+03  9.6954537e+00   1.00e+00  1.602e+05     0.0     424       0  2.7965396e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      51        Total time   (secs) :  9355.8
+ Products with A'    :      51        Project time (secs) :   153.6
+ Newton iterations   :       6        Mat-vec time (secs) :  9219.1
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 3.82e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  3.8242234e+03  0.0000000e+00   1.00e+00  1.176e+06     0.0       0       0  1.2434631e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     1.25000e-01     3.70097e+03     1.39879e+01
+         2          1         18     1.00000e+00     3.44207e+03     2.48498e+01
+         3          1         35     1.00000e+00     3.24589e+03     2.48073e+01
+         4          1         45     1.00000e+00     3.15082e+03     2.47515e+01
+         5          1         56     1.00000e+00     3.13568e+03     2.47439e+01
+break of testUpdateTau
+     5  3.1356845e+03  3.6426523e-01   1.00e+00  1.123e+05     0.0     506       0  1.0001249e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         6          1          4     1.56250e-02     3.12834e+03     1.13805e+02
+break of testUpdateTau
+     6  3.1283371e+03  4.3336090e+00   1.00e+00  2.150e+05     0.0     494       0  1.4552062e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     1.95312e-03     3.12041e+03     1.59457e+02
+break of testUpdateTau
+     7  3.1204128e+03  4.5793174e+00   1.00e+00  1.573e+05     0.0     496       0  2.0743715e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     3.90625e-03     3.10762e+03     2.22205e+02
+break of testUpdateTau
+     8  3.1076199e+03  7.9267671e+00   1.00e+00  1.886e+05     0.0     496       0  2.5865494e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     9.76562e-04     3.10200e+03     2.73557e+02
+break of testUpdateTau
+     9  3.1019984e+03  6.2556258e+00   1.00e+00  1.187e+05     0.0     498       0  3.3971327e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     1.95312e-03     3.09752e+03     3.55340e+02
+break of testUpdateTau
+    10  3.0975230e+03  1.3222674e+01   1.00e+00  1.892e+05     0.0     496       0  3.9043419e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      62        Total time   (secs) :  11398.2
+ Products with A'    :      62        Project time (secs) :    85.0
+ Newton iterations   :       7        Mat-vec time (secs) :  11302.6
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 3.75e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  3.7544202e+03  0.0000000e+00   1.00e+00  1.067e+06     0.0       0       0  1.3208024e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     1.25000e-01     3.71143e+03     1.48589e+01
+break of testUpdateTau
+     1  3.7114290e+03  1.8834717e+00   1.00e+00  8.728e+05     0.0       2       0  2.8989388e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         2          1          4     3.12500e-02     3.63050e+03     2.96830e+01
+         3          1         19     1.00000e+00     3.40433e+03     4.06929e+01
+         4          1         43     1.00000e+00     3.30029e+03     5.06255e+01
+         5          1         55     1.00000e+00     3.17053e+03     5.79770e+01
+         6          1         66     1.00000e+00     3.01436e+03     5.78951e+01
+         7          1         89     1.00000e+00     2.93974e+03     5.78690e+01
+         8          1        106     1.00000e+00     2.90568e+03     5.79527e+01
+break of testUpdateTau
+     8  2.9056761e+03  6.8533625e-01   1.00e+00  8.555e+04     0.0     800       0  1.2767476e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     9.76562e-04     2.90532e+03     1.56662e+02
+break of testUpdateTau
+     9  2.9053179e+03  2.7399219e+00   1.00e+00  9.341e+04     0.0     800       0  2.1803729e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     9.76562e-04     2.90211e+03     2.47121e+02
+break of testUpdateTau
+    10  2.9021143e+03  3.8647494e+00   1.00e+00  7.721e+04     0.0     800       0  3.2712151e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      43        Total time   (secs) :  8018.9
+ Products with A'    :      43        Project time (secs) :   161.0
+ Newton iterations   :       5        Mat-vec time (secs) :  7874.1
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 3.44e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  3.4419213e+03  0.0000000e+00   1.00e+00  9.441e+05     0.0       0       0  1.2548116e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     6.25000e-02     3.34273e+03     1.33324e+01
+         2          1         31     1.00000e+00     3.11466e+03     2.31217e+01
+         3          1         43     1.00000e+00     3.00509e+03     2.50962e+01
+         4          1         54     1.00000e+00     2.86370e+03     2.50348e+01
+         5          1         66     1.00000e+00     2.77913e+03     2.49918e+01
+         6          1         78     1.00000e+00     2.75476e+03     2.49653e+01
+break of testUpdateTau
+     6  2.7547559e+03  4.6570697e-01   1.00e+00  9.336e+04     0.0     458       0  9.3834494e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     7.81250e-03     2.75014e+03     1.06936e+02
+break of testUpdateTau
+     7  2.7501405e+03  3.8316546e+00   1.00e+00  1.565e+05     0.0     458       0  1.4215988e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     3.90625e-03     2.74638e+03     1.55807e+02
+break of testUpdateTau
+     8  2.7463836e+03  6.2032676e+00   1.00e+00  1.685e+05     0.0     458       0  1.8693221e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     9.76562e-04     2.74232e+03     2.00612e+02
+break of testUpdateTau
+     9  2.7423162e+03  6.6624102e+00   1.00e+00  1.363e+05     0.0     460       0  2.4211284e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     1.95312e-03     2.73785e+03     2.56357e+02
+break of testUpdateTau
+    10  2.7378512e+03  8.8984676e+00   1.00e+00  1.400e+05     0.0     460       0  2.9565595e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      54        Total time   (secs) :  9893.9
+ Products with A'    :      54        Project time (secs) :   117.2
+ Newton iterations   :       6        Mat-vec time (secs) :  9777.7
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 3.07e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  3.0707800e+03  0.0000000e+00   1.00e+00  7.116e+05     0.0       0       0  1.3250930e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     6.25000e-02     3.00159e+03     1.40791e+01
+         2          1         25     1.00000e+00     2.78413e+03     2.57848e+01
+         3          1         40     1.00000e+00     2.66170e+03     2.64670e+01
+         4          1         49     1.00000e+00     2.52170e+03     2.64134e+01
+         5          1         59     1.00000e+00     2.46808e+03     2.63777e+01
+         6          1         69     1.00000e+00     2.44243e+03     2.63392e+01
+break of testUpdateTau
+     6  2.4424347e+03  4.9032278e-01   1.00e+00  7.562e+04     0.0     456       0  9.2141639e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     7.81250e-03     2.43896e+03     1.05905e+02
+break of testUpdateTau
+     7  2.4389582e+03  3.8311231e+00   1.00e+00  1.254e+05     0.0     456       0  1.3959595e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     1.95312e-03     2.43285e+03     1.53574e+02
+break of testUpdateTau
+     8  2.4328486e+03  4.3435778e+00   1.00e+00  9.443e+04     0.0     456       0  2.0227768e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     1.95312e-03     2.43083e+03     2.16704e+02
+break of testUpdateTau
+     9  2.4308287e+03  9.4732408e+00   1.00e+00  1.408e+05     0.0     456       0  2.4423341e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+        10          1          4     9.76562e-04     2.42820e+03     2.58792e+02
+break of testUpdateTau
+    10  2.4281970e+03  7.6548927e+00   1.00e+00  9.391e+04     0.0     458       0  3.0701799e+02
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      55        Total time   (secs) :  10234.2
+ Products with A'    :      55        Project time (secs) :   111.3
+ Newton iterations   :       6        Mat-vec time (secs) :  10073.1
+
+
+ ==================================================================================
+ PQNL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.41e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       10
+
+     0  2.4128674e+03  0.0000000e+00   1.00e+00  3.743e+05     0.0       0       0  1.5555349e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         1          1          4     6.25000e-02     2.40163e+03     1.65273e+01
+break of testUpdateTau
+     1  2.4016325e+03  1.8268732e+00   1.00e+00  3.187e+05     0.0       2       0  3.3651382e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         2          1          4     1.56250e-02     2.37311e+03     3.40830e+01
+break of testUpdateTau
+     2  2.3731060e+03  3.6691795e+00   1.00e+00  3.079e+05     0.0       2       0  5.1943176e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         3          1          4     3.12500e-02     2.34853e+03     5.39845e+01
+break of testUpdateTau
+     3  2.3485283e+03  4.7434261e+00   1.00e+00  2.440e+05     0.0       4       0  7.4545006e+01
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         4          1          4     7.81250e-03     2.32323e+03     7.71528e+01
+break of testUpdateTau
+     4  2.3232339e+03  5.4960485e+00   1.00e+00  1.964e+05     0.0       6       0  1.0202948e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         5          1          4     7.81250e-03     2.29456e+03     1.05414e+02
+break of testUpdateTau
+     5  2.2945593e+03  6.0629390e+00   1.00e+00  1.544e+05     0.0       8       0  1.3613055e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         6          1          4     1.95312e-03     2.28675e+03     1.39774e+02
+break of testUpdateTau
+     6  2.2867454e+03  7.9034120e+00   1.00e+00  1.500e+05     0.0      10       0  1.7100132e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         7          1          4     3.90625e-03     2.26948e+03     1.75299e+02
+break of testUpdateTau
+     7  2.2694752e+03  9.9948226e+00   1.00e+00  1.498e+05     0.0      12       0  2.0538264e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         8          1          4     1.95312e-03     2.26829e+03     2.10073e+02
+break of testUpdateTau
+     8  2.2682879e+03  1.2178647e+01   1.00e+00  1.514e+05     0.0      14       0  2.3937518e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond
+         9          1          4     3.90625e-03     2.24954e+03     2.44982e+02
+break of testUpdateTau
+     9  2.2495387e+03  1.8710449e+01   1.00e+00  1.970e+05     0.0      16       0  2.6506290e+02
+
+Inside of minConf_PQN 
+ Iteration   FunEvals Projections     Step Length          rNorm2        Opt Cond

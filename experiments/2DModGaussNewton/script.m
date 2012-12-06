@@ -1,5 +1,5 @@
 %%
-cd ../../functions/
+cd ../../../../functions/
 addpath(genpath(pwd));
 cd ../experiments/2DModGaussNewton
 addpath(genpath(pwd));

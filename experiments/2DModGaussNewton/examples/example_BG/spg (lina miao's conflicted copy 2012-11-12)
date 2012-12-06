@@ -1,0 +1,22 @@
+
+ ==================================================================================
+ SPGL1_SLIM v. 46  (Tue, 14 Jun 2011) based on v.1017
+ ==================================================================================
+ No. rows              :    49070      No. columns           :  1058887
+ Initial tau           : 0.00e+00      Two-norm of b         : 2.31e+03
+ Optimality tol        : 1.00e-03      Target objective      : 0.00e+00
+ Basis pursuit tol     : 1.00e-03      Maximum iterations    :       30
+
+  Iter      Objective   Relative Gap  Rel Error      gNorm   stepG    nnzX    nnzG            tau
+     0  2.3095949e+03  0.0000000e+00   1.00e+00  5.400e+05     0.0       0       0  9.8779898e+00
+    18  1.8010791e+03  3.5107117e-01   1.00e+00  7.764e+04    -0.3     202       0  5.1659018e+01
+    28  1.5912067e+03  4.1693271e+00   1.00e+00  1.127e+05    -0.3     890       0  7.4119675e+01
+    30  1.5613123e+03  1.1861858e+00   1.00e+00  2.173e+04     0.0     948       0
+
+ ERROR EXIT -- Too many iterations
+
+ Products with A     :      45        Total time   (secs) :  10307.0
+ Products with A'    :      31        Project time (secs) :     7.7
+ Newton iterations   :       3        Mat-vec time (secs) :  10237.5
+ Line search its     :      17        Subspace iterations :       0
+

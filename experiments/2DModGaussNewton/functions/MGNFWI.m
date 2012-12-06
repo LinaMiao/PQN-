@@ -1,4 +1,4 @@
-function [results,u,misfit,Mig,info] = MGNFWI(vel_initial,Dobs,wavelet,model,opts,solver,sigma_ref)
+function [results,u,misfit,Mig,resultinfo] = MGNFWI(vel_initial,Dobs,wavelet,model,opts,solver,sigma_ref)
 % This function allows us to process modified gauss-newton full-waveform 
 % inversion, in which each gauss-newton subproblem is solved with the L1 solver
 % (SPGL1) developed by Ewout van den Berg and Michael P. Friedlander. 
@@ -219,7 +219,12 @@ while length(wavelet.faxis)>=model.nf && wavelet.faxis(1)<model.maxf && iter<=op
 		end
 		
 		% GN optimization
-		[dmw_nl,info] = GN_up(Mig,du_nl,opts,dmw_c,solver,sigma_ref);
+        if solver == 2
+            [dmw_nl,info] = GN_up(Mig,du_nl,opts,dmw_c,solver,sigma_ref(iter));
+        else
+            [dmw_nl,info] = GN_up(Mig,du_nl,opts,dmw_c,solver);
+        end
+        
 		resultinfo{end + 1} = info;
 		dmw_nl      = reshape(real(dmw_nl),model.nz,model.nx);
 		dmw_nl      = Smoothedge(dmw_nl,model.water,1);
