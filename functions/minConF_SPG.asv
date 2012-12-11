@@ -333,10 +333,10 @@ while funEvals <= maxIter
     
     
     if lnErr == 1 && finit == f
-        error('line search failed\n')
-        %warning('line search failed\n')
-        %funEvals = maxIter;
-        %break
+        %error('line search failed\n')
+        warning('line search failed\n')
+        funEvals = maxIter;
+        break
     end
     
     if lnErr == 1

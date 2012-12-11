@@ -227,8 +227,13 @@ while funEvals <= maxIter
     % pqnLineCurvy
    
     f_old = f;
+    if i == itn
+        step = min(1,1e3/sum(abs(g)));
+    else
+        step = 1;
+    end %% LINA : 11 15, bounded initial step with a s
     [f_new,x_new,g_new,r_new,nLine,t,lnErr] = ...
-        spgLineCurvy(x,-d,f,funObj,funProj);
+        spgLineCurvy(x,-d,f,funObj,funProj,step);
     nLineTot = nLineTot + nLine;
     
     % lnErr = 1;
@@ -385,7 +390,7 @@ while funEvals <= maxIter
        
         testUpdateTau  = ((testRelChange1 && rNorm >  2 * sigma) || ...
             (testRelChange2 && rNorm <= 2 * sigma)) && ...
-            ~stat;% && ~testUpdateTau;
+            ~stat && (i-itn)~=1; % do not update tau if only run one iteration
         
         if stat
             fprintf(fid,'find BP solution');
@@ -474,7 +479,7 @@ g = g + Hd;
 end
 
 function [fNew,xNew,gNew,rNew,iter,step,err] = ...
-    spgLineCurvy(x,g,fMax,funObj,funProj,params)
+    spgLineCurvy(x,g,fMax,funObj,funProj,step)
 % Projected backtracking linesearch.
 % On entry,
 % g  is the (possibly scaled) steepest descent direction.
@@ -483,8 +488,10 @@ EXIT_CONVERGED  = 0;
 EXIT_ITERATIONS = 1;
 EXIT_NODESCENT  = 2;
 gamma  = 1e-4;
-maxIts = 10;
-step   =  1;
+maxIts = 3;
+if not(exist('step','var'))
+    step   =  1;
+end
 sNorm  =  0;
 scale  =  1;      % Safeguard scaling.  (See below.)
 nSafe  =  0;      % No. of safeguarding steps.

@@ -1,4 +1,4 @@
-function [x,r,g,info] = pqnl1_2( A, b, tau, sigma, x, options, sigma_ref,corrections)
+function [x,r,g,info] = pqnl1_2( A, b, tau, sigma, x, options, sigma_ref)
 %
 % [x, r, g, info] = pqnl1(A, b, tau, sigma, x0, options)
 %
@@ -269,9 +269,6 @@ if ~exist('sigma_ref','var')
     sigma_ref = sigma;
 end
 
-if not(exist('corrections','var'))
-    corrections = 30;
-end
 % Determine initial x, vector length n, and see if problem is complex
 explicit = ~(isa(A,'function_handle'));
 if isempty(x)
@@ -414,12 +411,12 @@ while 1
         fprintf(fid,'rNorm less than sigma_ref\n');
         % in case the initial residual is less sigma_ref, prepare for
         % output info
-        %if ~exist('rNorm','var')
+        if ~exist('rNorm','var')
             gNorm   = undist(options.dual_norm(g,weights)); % originally options.dual_norm(-g,weights), but for true norms the sign should not matter
             rNorm   = norm(r, 2);
             gap     = dot(r,(r-b)) + tau*gNorm;
             rGap    = abs(gap) / max(1,f);
-        %end
+        end
         break;
     end
     
@@ -546,7 +543,6 @@ while 1
         opt.fid = options.fid;
         opt.primal_norm = options.primal_norm;
         opt.dual_norm = options.dual_norm;
-        opt.corrections = corrections;
         %opt.maxIter = 1; % how many itn pqn going to run, ie maxIter-1 is the correction we had in Hessian
         %opt.optTol = 1e-6-iter*(1e-6-1e-8)/options.iterations;
         %opt.maxIter = 5+.1*min(size(A,2)/size(A,1),10)+.2*iter;
@@ -580,11 +576,17 @@ while 1
             x = xOld;  f = fOld;  r = rOld;  g = gOld;
             break;
         else
-           stat = 6;
-           break;
+            rethrow(err);
+        end
+        if strcmp(err.identifier,'MATLAB:UndefinedFunction')
+            stat = EXIT_MATVEC_LIMIT;
+            iter = iter - 1;
+            x = xOld;  f = fOld;  r = rOld;  g = gOld;
+            break;
+        else
+            rethrow(err);
         end
     end
-        
     
     
 
@@ -652,7 +654,7 @@ switch (stat)
    case {EXIT_BPSOL1_FOUND, EXIT_BPSOL2_FOUND}
       printf('\n EXIT -- Found a BP solution\n');
    case EXIT_LINE_ERROR
-      printf('\n ERROR EXIT -- Linesearch error (%i)\n');
+      printf('\n ERROR EXIT -- Linesearch error (%i)\n',lnErr);
    case EXIT_SUBOPTIMAL_BP
       printf('\n EXIT -- Found a suboptimal BP solution\n');
    case EXIT_MATVEC_LIMIT
